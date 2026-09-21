@@ -1,24 +1,29 @@
 package com.pla.efclash_blade.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.List;
 
 public class EFClashBladeConfig {
-    public static final ForgeConfigSpec.Builder BUILDER = new ForgeConfigSpec.Builder();
-    public static final ForgeConfigSpec SPEC;
+    public static final ModConfigSpec.Builder BUILDER = new ModConfigSpec.Builder();
+    public static final ModConfigSpec SPEC;
 
-    public static ForgeConfigSpec.ConfigValue<List<? extends String>> BLACK_LIST;
-    public static ForgeConfigSpec.ConfigValue<Integer> BREAK_WEAPON_VALUE_ON_CLASH;
-    public static ForgeConfigSpec.ConfigValue<Double> CLASH_CHANCE;
-    public static ForgeConfigSpec.ConfigValue<Boolean> SHAKE_SCREEN;
+    public static ModConfigSpec.ConfigValue<List<? extends String>> BLACK_LIST;
+    public static ModConfigSpec.ConfigValue<Integer> BREAK_WEAPON_VALUE_ON_CLASH;
+    public static ModConfigSpec.ConfigValue<Double> CLASH_CHANCE;
+    public static ModConfigSpec.ConfigValue<Boolean> SHAKE_SCREEN;
 
     static {
         BLACK_LIST = BUILDER.comment(
                         "A list of entities that can't do Clash Blade",
                         "Input: [\"minecraft\"] will disable Clash Blade for all of entities from Minecraft",
                         "Input: [\"minecraft:zombie\"] will disable Clash Blade for zombie entity from Minecraft.")
-                .defineList("blackList", List.of("nightfall_invade"), entry -> entry instanceof String);
+                .defineListAllowEmpty(
+                        "blackList",
+                        List.of("nightfall_invade"),
+                        () -> "",
+                        entry -> entry instanceof String
+                );
         BREAK_WEAPON_VALUE_ON_CLASH = BUILDER.comment(
                         "The value for breaking weapon value for each successfullly clashing",
                         "Set to 0 to disable.")

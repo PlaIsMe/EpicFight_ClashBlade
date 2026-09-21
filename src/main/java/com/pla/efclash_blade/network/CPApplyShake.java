@@ -18,45 +18,63 @@ package com.pla.efclash_blade.network;
  *   Copyright (c) 2025 pla_is_me
  */
 
-import com.pla.efclash_blade.client.CameraEngine;
-import net.minecraft.network.FriendlyByteBuf;
-import net.minecraftforge.network.NetworkEvent;
+import com.pla.efclash_blade.EFClashBlade;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
 
-import java.util.function.Supplier;
+public class CPApplyShake implements CustomPacketPayload {
+    public static final Type<CPApplyShake> TYPE = new Type<>(
+            ResourceLocation.fromNamespaceAndPath(EFClashBlade.MOD_ID, "apply_shake")
+    );
+    public static final StreamCodec<RegistryFriendlyByteBuf, CPApplyShake> STREAM_CODEC =
+            StreamCodec.ofMember(CPApplyShake::encode, CPApplyShake::new);
 
-public class CPApplyShake {
     private final int time;
     private final float strength;
     private final float frequency;
-    private final int decay_time;
+    private final int decayTime;
 
-    public CPApplyShake(int time, float strength, float frequency, int decay_time){
+    public CPApplyShake(int time, float strength, float frequency, int decayTime) {
         this.time = time;
         this.strength = strength;
         this.frequency = frequency;
-        this.decay_time = decay_time;
+        this.decayTime = decayTime;
     }
-    public CPApplyShake(FriendlyByteBuf buf){
+
+    private CPApplyShake(RegistryFriendlyByteBuf buf) {
         this.time = buf.readInt();
         this.strength = buf.readFloat();
         this.frequency = buf.readFloat();
-        this.decay_time = buf.readInt();
+        this.decayTime = buf.readInt();
     }
-    public void encode(FriendlyByteBuf buf){
+
+    private void encode(RegistryFriendlyByteBuf buf) {
         buf.writeInt(time);
         buf.writeFloat(strength);
         buf.writeFloat(frequency);
-        buf.writeInt(decay_time);
+        buf.writeInt(decayTime);
     }
 
-    public void handle(Supplier<NetworkEvent.Context> context) {
-        NetworkEvent.Context ctx = context.get();
-        ctx.enqueueWork(() -> {
-            CameraEngine engine = CameraEngine.getInstance();
-            if (engine != null) {
-                engine.shakeCamera(strength, time, frequency, decay_time);
-            }
-        });
-        ctx.setPacketHandled(true);
+    public int time() {
+        return time;
+    }
+
+    public float strength() {
+        return strength;
+    }
+
+    public float frequency() {
+        return frequency;
+    }
+
+    public int decayTime() {
+        return decayTime;
+    }
+
+    @Override
+    public Type<? extends CustomPacketPayload> type() {
+        return TYPE;
     }
 }

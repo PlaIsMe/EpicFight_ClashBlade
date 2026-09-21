@@ -9,6 +9,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.SwordItem;
 import net.minecraft.world.phys.Vec3;
@@ -17,25 +18,23 @@ import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.animation.types.EntityState;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
+import yesman.epicfight.api.event.EntityEventListener;
+import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.api.utils.AttackResult.ResultType;
-import yesman.epicfight.gameasset.EpicFightSounds;
-import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.particle.HitParticleType;
+import yesman.epicfight.registry.entries.EpicFightParticles;
+import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.passive.PassiveSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.WeaponCategories;
-import yesman.epicfight.world.entity.eventlistener.PlayerEventListener.EventType;
 
 import java.util.Objects;
 import java.util.Random;
-import java.util.UUID;
 
 public class ClashBladeSkill extends PassiveSkill {
-    private static final UUID EVENT_UUID = UUID.fromString("a6f630fd-45e1-4d3d-9542-2c91a8cf9833");
-
-    public ClashBladeSkill(SkillBuilder<? extends PassiveSkill> skillBuilder) {
+    public ClashBladeSkill(SkillBuilder<?> skillBuilder) {
         super(skillBuilder);
     }
 
@@ -53,12 +52,12 @@ public class ClashBladeSkill extends PassiveSkill {
     }
 
     @Override
-    public void onInitiate(SkillContainer skillcontainer) {
-        super.onInitiate(skillcontainer);
+    public void onInitiate(SkillContainer skillcontainer, EntityEventListener eventListener) {
+        super.onInitiate(skillcontainer, eventListener);
         skillcontainer.getDataManager();
-        skillcontainer.getExecutor().getEventListener().addEventListener(EventType.TAKE_DAMAGE_EVENT_ATTACK, ClashBladeSkill.EVENT_UUID, (pre) -> {
-            PlayerPatch<?> playerPatch = pre.getPlayerPatch();
-            ServerPlayer serverPlayer = pre.getPlayerPatch().getOriginal();
+        eventListener.registerEvent(EpicFightEventHooks.Entity.TAKE_DAMAGE_INCOME, (pre) -> {
+            PlayerPatch<?> playerPatch = skillcontainer.getExecutor();
+            ServerPlayer serverPlayer = skillcontainer.getServerExecutor().getOriginal();
             DamageSource damageSource = pre.getDamageSource();
 
             AnimationPlayer animationPlayer =
@@ -77,12 +76,12 @@ public class ClashBladeSkill extends PassiveSkill {
 
                 if (entity != null) {
                     Vec3 entityPosition = entity.position();
-                    Vec3 entityViewVector = pre.getPlayerPatch().getOriginal().getViewVector(1.0F);
-                    Vec3 entitySubtract = entityPosition.subtract(pre.getPlayerPatch().getOriginal().getEyePosition()).normalize();
+                    Vec3 entityViewVector = playerPatch.getOriginal().getViewVector(1.0F);
+                    Vec3 entitySubtract = entityPosition.subtract(playerPatch.getOriginal().getEyePosition()).normalize();
 
                     if (entitySubtract.dot(entityViewVector) > 0.0D) {
                         if (new Random().nextFloat() > EFClashBladeConfig.CLASH_CHANCE.get()) return;
-                        pre.setCanceled(true);
+                        pre.cancel();
                         pre.setResult(ResultType.BLOCKED);
                         playerPatch.playSound(EpicFightSounds.CLASH.get(), -0.05F, 0.1F);
                         entity.setDeltaMovement(new Vec3(entity.getLookAngle().x * -0.2D, 0.0D, entity.getLookAngle().z * -0.2D));
@@ -95,14 +94,18 @@ public class ClashBladeSkill extends PassiveSkill {
                                     || serverPlayer.getOffhandItem().getItem() instanceof AxeItem)
                                     && new Random().nextBoolean()) {
                                 damaged = true;
-                                serverPlayer.getOffhandItem().hurtAndBreak(getWeaponDestroyValueOnClash(dynamicAnimation, damageSource, playerPatch, serverLevel), serverPlayer, (player) -> {
-                                    player.broadcastBreakEvent(InteractionHand.OFF_HAND);
-                                });
+                                serverPlayer.getOffhandItem().hurtAndBreak(
+                                        getWeaponDestroyValueOnClash(dynamicAnimation, damageSource, playerPatch, serverLevel),
+                                        serverPlayer,
+                                        EquipmentSlot.OFFHAND
+                                );
                             }
                             if (!damaged) {
-                                serverPlayer.getMainHandItem().hurtAndBreak(getWeaponDestroyValueOnClash(dynamicAnimation, damageSource, playerPatch, serverLevel), serverPlayer, (player) -> {
-                                    player.broadcastBreakEvent(InteractionHand.MAIN_HAND);
-                                });
+                                serverPlayer.getMainHandItem().hurtAndBreak(
+                                        getWeaponDestroyValueOnClash(dynamicAnimation, damageSource, playerPatch, serverLevel),
+                                        serverPlayer,
+                                        EquipmentSlot.MAINHAND
+                                );
                             }
                             if (EFClashBladeConfig.SHAKE_SCREEN.get()) {
                                 ScreenShakeUtil.applyScreenShake(serverLevel, playerPatch.getOriginal().getOnPos().getCenter(), 1.0, 20, 4);
@@ -112,12 +115,6 @@ public class ClashBladeSkill extends PassiveSkill {
                     }
                 }
             }
-        });
-    }
-
-    @Override
-    public void onRemoved(SkillContainer skillcontainer) {
-        super.onRemoved(skillcontainer);
-        skillcontainer.getExecutor().getEventListener().removeListener(EventType.TAKE_DAMAGE_EVENT_ATTACK, ClashBladeSkill.EVENT_UUID);
+        }, this);
     }
 }

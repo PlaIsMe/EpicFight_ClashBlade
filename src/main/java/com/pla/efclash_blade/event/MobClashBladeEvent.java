@@ -3,6 +3,7 @@ package com.pla.efclash_blade.event;
 import com.pla.efclash_blade.config.EFClashBladeConfig;
 import com.pla.efclash_blade.util.ScreenShakeUtil;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
@@ -12,18 +13,17 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.event.entity.living.LivingAttackEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import yesman.epicfight.api.animation.AnimationPlayer;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.animation.types.EntityState;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
-import yesman.epicfight.gameasset.EpicFightSounds;
-import yesman.epicfight.particle.EpicFightParticles;
 import yesman.epicfight.particle.HitParticleType;
+import yesman.epicfight.registry.entries.EpicFightParticles;
+import yesman.epicfight.registry.entries.EpicFightSounds;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem.WeaponCategories;
@@ -35,7 +35,7 @@ import java.util.Random;
 @EventBusSubscriber
 public class MobClashBladeEvent {
     public static boolean isBlacklisted(Entity entity) {
-        ResourceLocation resourceLocation = ForgeRegistries.ENTITY_TYPES.getKey(entity.getType());
+        ResourceLocation resourceLocation = BuiltInRegistries.ENTITY_TYPE.getKey(entity.getType());
         if (resourceLocation == null) return false;
         String fullId = resourceLocation.toString();
         String modId = resourceLocation.getNamespace();
@@ -61,7 +61,7 @@ public class MobClashBladeEvent {
     // 0: regular clash, clashing in front of mob while swinging attack animation
     // 1: special clash, clashing in front of mob without swinging attack animation, can clash against any type of damageSource
     // 2: force clash,clash without in front of mob, against any type of damage source
-    private static void clashBlade(LivingAttackEvent livingAttackEvent, LivingEntityPatch<?> defenderLivingEntityPatch,
+    private static void clashBlade(LivingIncomingDamageEvent livingAttackEvent, LivingEntityPatch<?> defenderLivingEntityPatch,
                                    AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                    EntityState defenderEntityState, Entity attackerEntity, Entity defenderEntity, ServerLevel serverLevel, int clashBy) {
         if (new Random().nextFloat() > EFClashBladeConfig.CLASH_CHANCE.get()) return;
@@ -96,40 +96,40 @@ public class MobClashBladeEvent {
         customPostAdditionClashBlade(livingAttackEvent, defenderLivingEntityPatch, defenderDynamicAnimation, defenderEntityState, attackerEntity, defenderEntity, clashBy);
     }
 
-    private static boolean customAdditionClashBladeLogic(LivingAttackEvent livingAttackEvent,
+    private static boolean customAdditionClashBladeLogic(LivingIncomingDamageEvent livingAttackEvent,
                                                          LivingEntityPatch<?> defenderLivingEntityPatch,
                                                          AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                                          EntityState defenderEntityState, Entity attacker, Entity defender) {
         return false;
     }
 
-    private static boolean forceClashBlade(LivingAttackEvent livingAttackEvent,
+    private static boolean forceClashBlade(LivingIncomingDamageEvent livingAttackEvent,
                                                          LivingEntityPatch<?> defenderLivingEntityPatch,
                                                          AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                                          EntityState defenderEntityState, Entity attacker, Entity defender) {
         return false;
     }
 
-    private static boolean blacklistClashBladeAnimation(LivingAttackEvent livingAttackEvent,
+    private static boolean blacklistClashBladeAnimation(LivingIncomingDamageEvent livingAttackEvent,
                                                          LivingEntityPatch<?> defenderLivingEntityPatch,
                                                          AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                                          EntityState defenderEntityState, Entity attacker, Entity defender) {
         return true;
     }
 
-    private static void customPreAdditionClashBlade(LivingAttackEvent livingAttackEvent,
+    private static void customPreAdditionClashBlade(LivingIncomingDamageEvent livingAttackEvent,
                                                     LivingEntityPatch<?> defenderLivingEntityPatch,
                                                     AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                                     EntityState defenderEntityState, Entity attacker, Entity defender, int clashBy) {
     }
 
-    private static void customPostAdditionClashBlade(LivingAttackEvent livingAttackEvent,
+    private static void customPostAdditionClashBlade(LivingIncomingDamageEvent livingAttackEvent,
                                                      LivingEntityPatch<?> defenderLivingEntityPatch,
                                                      AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                                      EntityState defenderEntityState, Entity attacker, Entity defender, int clashBy) {
     }
 
-    private static boolean conditionToPlayClashSound(LivingAttackEvent livingAttackEvent,
+    private static boolean conditionToPlayClashSound(LivingIncomingDamageEvent livingAttackEvent,
                                                      LivingEntityPatch<?> defenderLivingEntityPatch,
                                                      AssetAccessor<? extends StaticAnimation> defenderDynamicAnimation,
                                                      EntityState defenderEntityState, Entity attacker, Entity defender) {
@@ -137,7 +137,7 @@ public class MobClashBladeEvent {
     }
 
     @SubscribeEvent
-    public static void onLivingAttack(LivingAttackEvent livingAttackEvent) {
+    public static void onLivingAttack(LivingIncomingDamageEvent livingAttackEvent) {
         Entity defenderEntity = livingAttackEvent.getEntity();
         DamageSource damageSource = livingAttackEvent.getSource();
         Entity attackerEntity = damageSource.getEntity();

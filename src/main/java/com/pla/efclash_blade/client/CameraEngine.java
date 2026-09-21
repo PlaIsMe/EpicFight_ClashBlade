@@ -21,12 +21,12 @@ package com.pla.efclash_blade.client;
 import com.pla.efclash_blade.EFClashBlade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.EventPriority;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ViewportEvent;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;
@@ -80,7 +80,7 @@ public class CameraEngine {
         this.shakeCamera(new ShakeEntry(strength, time, 0.3, decay_time));
     }
 
-    @Mod.EventBusSubscriber(modid = EFClashBlade.MOD_ID, value = Dist.CLIENT)
+    @EventBusSubscriber(modid = EFClashBlade.MOD_ID, value = Dist.CLIENT)
     public static class Events {
         @SubscribeEvent(priority = EventPriority.LOW)
         public static void cameraSetupEvent(ViewportEvent.ComputeCameraAngles event) {

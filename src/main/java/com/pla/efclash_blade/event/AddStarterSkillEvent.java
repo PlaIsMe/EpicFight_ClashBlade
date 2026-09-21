@@ -8,10 +8,10 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.eventbus.api.Event;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.bus.api.Event;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import yesman.epicfight.network.EpicFightNetworkManager;
 import yesman.epicfight.skill.Skill;
 import yesman.epicfight.skill.SkillContainer;
@@ -21,7 +21,7 @@ import yesman.epicfight.world.capabilities.entitypatch.player.ServerPlayerPatch;
 
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
+@EventBusSubscriber(modid = EFClashBlade.MOD_ID)
 public class AddStarterSkillEvent {
     private static final String KEY = EFClashBlade.MOD_ID + ":has_joined_before";
     @SubscribeEvent
@@ -64,12 +64,12 @@ public class AddStarterSkillEvent {
     private static void giveSkill(ServerPlayer player, ServerPlayerPatch patch, SkillSlot slot, Skill skill) {
         if (skill == null) return;
 
-        SkillContainer container = patch.getSkillCapability().getSkillContainerFor(slot);
+        SkillContainer container = patch.getPlayerSkills().getSkillContainerFor(slot);
         if (container == null) return;
 
         if (container.setSkill(skill)) {
             if (skill.getCategory().learnable()) {
-                patch.getSkillCapability().addLearnedSkill(skill);
+                patch.getPlayerSkills().addLearnedSkill(skill);
             }
 
             EpicFightNetworkManager.sendToPlayer(container.createSyncPacketToLocalPlayer(), player);
@@ -84,7 +84,7 @@ public class AddStarterSkillEvent {
                     ServerPlayerPatch playerPatch = EpicFightCapabilities.getEntityPatch(serverPlayer, ServerPlayerPatch.class);
                     if (playerPatch == null) return;
 
-                    giveSkill(serverPlayer, playerPatch, EFClashBladeSkillSlots.CLASH_BLADE, EFClashBladeSkills.CLASH_BLADE);
+                    giveSkill(serverPlayer, playerPatch, EFClashBladeSkillSlots.CLASH_BLADE, EFClashBladeSkills.CLASH_BLADE.get());
                     markJoined((Player) entity);
                 }
             }
