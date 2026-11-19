@@ -1,4 +1,5 @@
 package com.pla.efclash_blade;
+
 import com.mojang.logging.LogUtils;
 import com.pla.efclash_blade.client.CameraEngine;
 import com.pla.efclash_blade.config.EFClashBladeConfig;
@@ -27,8 +28,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 @Mod(EFClashBlade.MOD_ID)
-public class EFClashBlade
-{
+public class EFClashBlade {
     public static final String MOD_ID = "efclash_blade";
     public static final Logger LOGGER = LogUtils.getLogger();
     public static final SimpleChannel PACKET_HANDLER = NetworkRegistry
@@ -46,7 +46,10 @@ public class EFClashBlade
         }
     }
 
-    public static <T> void addNetworkMessage(Class<T> oclass, BiConsumer<T, FriendlyByteBuf> biconsumer, Function<FriendlyByteBuf, T> function, BiConsumer<T, Supplier<NetworkEvent.Context>> biconsumer1) {
+    public static <T> void addNetworkMessage(Class<T> oclass,
+                                             BiConsumer<T, FriendlyByteBuf> biconsumer,
+                                             Function<FriendlyByteBuf, T> function,
+                                             BiConsumer<T, Supplier<NetworkEvent.Context>> biconsumer1) {
         EFClashBlade.PACKET_HANDLER.registerMessage(EFClashBlade.messageID, oclass, biconsumer, function, biconsumer1);
         ++EFClashBlade.messageID;
     }

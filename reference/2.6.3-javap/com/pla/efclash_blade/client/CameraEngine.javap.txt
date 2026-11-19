@@ -1,0 +1,335 @@
+Compiled from "CameraEngine.java"
+public class com.pla.efclash_blade.client.CameraEngine {
+  private static com.pla.efclash_blade.client.CameraEngine instance;
+
+  private final java.util.PriorityQueue<com.pla.efclash_blade.client.CameraEngine$ShakeEntry> queue;
+
+  public com.pla.efclash_blade.client.CameraEngine();
+    Code:
+       0: aload_0
+       1: invokespecial #34                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: new           #36                 // class java/util/PriorityQueue
+       8: dup
+       9: invokedynamic #55,  0             // InvokeDynamic #0:applyAsDouble:()Ljava/util/function/ToDoubleFunction;
+      14: invokestatic  #61                 // InterfaceMethod java/util/Comparator.comparingDouble:(Ljava/util/function/ToDoubleFunction;)Ljava/util/Comparator;
+      17: invokespecial #64                 // Method java/util/PriorityQueue."<init>":(Ljava/util/Comparator;)V
+      20: putfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      23: aload_0
+      24: putstatic     #68                 // Field instance:Lcom/pla/efclash_blade/client/CameraEngine;
+      27: return
+    LineNumberTable:
+      line 53: 0
+      line 50: 4
+      line 51: 14
+      line 54: 23
+      line 55: 27
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      28     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+
+  public static com.pla.efclash_blade.client.CameraEngine getInstance();
+    Code:
+       0: getstatic     #68                 // Field instance:Lcom/pla/efclash_blade/client/CameraEngine;
+       3: areturn
+    LineNumberTable:
+      line 58: 0
+
+  public java.util.PriorityQueue<com.pla.efclash_blade.client.CameraEngine$ShakeEntry> getQueue();
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+       4: areturn
+    LineNumberTable:
+      line 62: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+
+  public void tickTimers();
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+       4: invokevirtual #79                 // Method java/util/PriorityQueue.isEmpty:()Z
+       7: ifeq          11
+      10: return
+      11: aload_0
+      12: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      15: invokedynamic #91,  0             // InvokeDynamic #1:test:()Ljava/util/function/Predicate;
+      20: invokevirtual #95                 // Method java/util/PriorityQueue.removeIf:(Ljava/util/function/Predicate;)Z
+      23: pop
+      24: return
+    LineNumberTable:
+      line 70: 0
+      line 71: 10
+      line 73: 11
+      line 81: 24
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      25     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+
+  public void applyShake(net.minecraftforge.client.event.ViewportEvent$ComputeCameraAngles, net.minecraft.world.entity.player.Player);
+    Code:
+       0: invokestatic  #103                // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+       3: astore_3
+       4: aload_3
+       5: getfield      #107                // Field net/minecraft/client/Minecraft.f_91080_:Lnet/minecraft/client/gui/screens/Screen;
+       8: ifnonnull     28
+      11: aload_3
+      12: invokevirtual #110                // Method net/minecraft/client/Minecraft.m_91104_:()Z
+      15: ifne          28
+      18: aload_0
+      19: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      22: invokevirtual #79                 // Method java/util/PriorityQueue.isEmpty:()Z
+      25: ifeq          29
+      28: return
+      29: aload_0
+      30: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      33: invokevirtual #114                // Method java/util/PriorityQueue.peek:()Ljava/lang/Object;
+      36: checkcast     #11                 // class com/pla/efclash_blade/client/CameraEngine$ShakeEntry
+      39: astore        4
+      41: aload         4
+      43: ifnonnull     47
+      46: return
+      47: aload_2
+      48: getfield      #120                // Field net/minecraft/world/entity/player/Player.f_19797_:I
+      51: i2d
+      52: aload_1
+      53: invokevirtual #124                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.getPartialTick:()D
+      56: dadd
+      57: dstore        5
+      59: aload         4
+      61: getfield      #128                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.strength:D
+      64: ldc2_w        #129                // double 4.0d
+      67: ddiv
+      68: dstore        7
+      70: aload         4
+      72: getfield      #133                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.frequency:D
+      75: dstore        9
+      77: aload_1
+      78: aload_1
+      79: invokevirtual #137                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.getPitch:()F
+      82: f2d
+      83: dload         7
+      85: dload         5
+      87: dload         9
+      89: dmul
+      90: ldc2_w        #138                // double 2.0d
+      93: dadd
+      94: invokestatic  #145                // Method java/lang/Math.cos:(D)D
+      97: dmul
+      98: dadd
+      99: d2f
+     100: invokevirtual #149                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.setPitch:(F)V
+     103: aload_1
+     104: aload_1
+     105: invokevirtual #152                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.getYaw:()F
+     108: f2d
+     109: dload         7
+     111: dload         5
+     113: dload         9
+     115: dmul
+     116: dconst_1
+     117: dadd
+     118: invokestatic  #145                // Method java/lang/Math.cos:(D)D
+     121: dmul
+     122: dadd
+     123: d2f
+     124: invokevirtual #155                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.setYaw:(F)V
+     127: aload_1
+     128: aload_1
+     129: invokevirtual #158                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.getRoll:()F
+     132: f2d
+     133: dload         7
+     135: dload         5
+     137: dload         9
+     139: dmul
+     140: invokestatic  #145                // Method java/lang/Math.cos:(D)D
+     143: dmul
+     144: dadd
+     145: d2f
+     146: invokevirtual #161                // Method net/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles.setRoll:(F)V
+     149: return
+    LineNumberTable:
+      line 85: 0
+      line 86: 4
+      line 87: 28
+      line 90: 29
+      line 91: 41
+      line 92: 46
+      line 95: 47
+      line 96: 59
+      line 97: 70
+      line 98: 77
+      line 99: 94
+      line 98: 100
+      line 100: 103
+      line 101: 118
+      line 100: 124
+      line 102: 127
+      line 103: 140
+      line 102: 146
+      line 104: 149
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0     150     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+          0     150     1 event   Lnet/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles;
+          0     150     2 player   Lnet/minecraft/world/entity/player/Player;
+          4     146     3 minecraft   Lnet/minecraft/client/Minecraft;
+         41     109     4   top   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+         59      91     5 ticksExistedDelta   D
+         70      80     7 strength   D
+         77      73     9 frequency   D
+
+  public void shakeCamera(com.pla.efclash_blade.client.CameraEngine$ShakeEntry);
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+       4: invokevirtual #79                 // Method java/util/PriorityQueue.isEmpty:()Z
+       7: ifne          32
+      10: aload_0
+      11: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      14: invokevirtual #114                // Method java/util/PriorityQueue.peek:()Ljava/lang/Object;
+      17: checkcast     #11                 // class com/pla/efclash_blade/client/CameraEngine$ShakeEntry
+      20: getfield      #128                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.strength:D
+      23: aload_1
+      24: getfield      #128                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.strength:D
+      27: dcmpl
+      28: iflt          32
+      31: return
+      32: aload_0
+      33: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      36: invokevirtual #175                // Method java/util/PriorityQueue.clear:()V
+      39: aload_0
+      40: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+      43: aload_1
+      44: invokevirtual #179                // Method com/pla/efclash_blade/client/CameraEngine$ShakeEntry.copy:()Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+      47: invokevirtual #182                // Method java/util/PriorityQueue.add:(Ljava/lang/Object;)Z
+      50: pop
+      51: return
+    LineNumberTable:
+      line 111: 0
+      line 112: 31
+      line 114: 32
+      line 115: 39
+      line 116: 51
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      52     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+          0      52     1 entry   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+
+  public void shakeCamera(float, int, float, int);
+    Code:
+       0: aload_0
+       1: new           #11                 // class com/pla/efclash_blade/client/CameraEngine$ShakeEntry
+       4: dup
+       5: fload_1
+       6: f2d
+       7: iload_2
+       8: fload_3
+       9: f2d
+      10: iload         4
+      12: invokespecial #187                // Method com/pla/efclash_blade/client/CameraEngine$ShakeEntry."<init>":(DIDI)V
+      15: invokevirtual #189                // Method shakeCamera:(Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;)V
+      18: return
+    LineNumberTable:
+      line 119: 0
+      line 120: 18
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      19     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+          0      19     1 strength   F
+          0      19     2  time   I
+          0      19     3 frequency   F
+          0      19     4 decayTime   I
+
+  public void shakeCamera(int, float, int);
+    Code:
+       0: aload_0
+       1: new           #11                 // class com/pla/efclash_blade/client/CameraEngine$ShakeEntry
+       4: dup
+       5: fload_2
+       6: f2d
+       7: iload_1
+       8: ldc2_w        #194                // double 0.3d
+      11: iload_3
+      12: invokespecial #187                // Method com/pla/efclash_blade/client/CameraEngine$ShakeEntry."<init>":(DIDI)V
+      15: invokevirtual #189                // Method shakeCamera:(Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;)V
+      18: return
+    LineNumberTable:
+      line 123: 0
+      line 124: 18
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      19     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+          0      19     1  time   I
+          0      19     2 strength   F
+          0      19     3 decayTime   I
+
+  public void clear();
+    Code:
+       0: aload_0
+       1: getfield      #66                 // Field queue:Ljava/util/PriorityQueue;
+       4: invokevirtual #175                // Method java/util/PriorityQueue.clear:()V
+       7: return
+    LineNumberTable:
+      line 127: 0
+      line 128: 7
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       8     0  this   Lcom/pla/efclash_blade/client/CameraEngine;
+
+  private static boolean lambda$tickTimers$1(com.pla.efclash_blade.client.CameraEngine$ShakeEntry);
+    Code:
+       0: aload_0
+       1: dup
+       2: getfield      #198                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.remainingTicks:I
+       5: iconst_1
+       6: isub
+       7: putfield      #198                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.remainingTicks:I
+      10: aload_0
+      11: getfield      #198                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.remainingTicks:I
+      14: aload_0
+      15: getfield      #201                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.decay_time:I
+      18: if_icmpgt     45
+      21: aload_0
+      22: dup
+      23: getfield      #128                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.strength:D
+      26: ldc2_w        #202                // double 0.8d
+      29: dmul
+      30: putfield      #128                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.strength:D
+      33: aload_0
+      34: dup
+      35: getfield      #133                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.frequency:D
+      38: ldc2_w        #204                // double 0.97d
+      41: dmul
+      42: putfield      #133                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.frequency:D
+      45: aload_0
+      46: getfield      #198                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.remainingTicks:I
+      49: ifgt          56
+      52: iconst_1
+      53: goto          57
+      56: iconst_0
+      57: ireturn
+    LineNumberTable:
+      line 74: 0
+      line 75: 10
+      line 76: 21
+      line 77: 33
+      line 79: 45
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      58     0 entry   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+
+  private static double lambda$new$0(com.pla.efclash_blade.client.CameraEngine$ShakeEntry);
+    Code:
+       0: aload_0
+       1: getfield      #128                // Field com/pla/efclash_blade/client/CameraEngine$ShakeEntry.strength:D
+       4: dneg
+       5: dreturn
+    LineNumberTable:
+      line 51: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       6     0 entry   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+}

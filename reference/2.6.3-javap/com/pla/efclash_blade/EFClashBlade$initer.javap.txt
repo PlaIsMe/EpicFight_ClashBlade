@@ -1,0 +1,28 @@
+Compiled from "EFClashBlade.java"
+public class com.pla.efclash_blade.EFClashBlade$initer {
+  public com.pla.efclash_blade.EFClashBlade$initer();
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 61: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/EFClashBlade$initer;
+
+  public static void init(net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: ldc           #36                 // class com/pla/efclash_blade/network/CPApplyShake
+       2: invokedynamic #56,  0             // InvokeDynamic #0:accept:()Ljava/util/function/BiConsumer;
+       7: invokedynamic #67,  0             // InvokeDynamic #1:apply:()Ljava/util/function/Function;
+      12: invokedynamic #75,  0             // InvokeDynamic #2:accept:()Ljava/util/function/BiConsumer;
+      17: invokestatic  #79                 // Method com/pla/efclash_blade/EFClashBlade.addNetworkMessage:(Ljava/lang/Class;Ljava/util/function/BiConsumer;Ljava/util/function/Function;Ljava/util/function/BiConsumer;)V
+      20: return
+    LineNumberTable:
+      line 64: 0
+      line 70: 20
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      21     0 fmlCommonSetupEvent   Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;
+}

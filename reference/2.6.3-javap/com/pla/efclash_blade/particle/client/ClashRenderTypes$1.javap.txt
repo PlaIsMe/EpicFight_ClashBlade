@@ -1,0 +1,91 @@
+Compiled from "ClashRenderTypes.java"
+class com.pla.efclash_blade.particle.client.ClashRenderTypes$1 implements net.minecraft.client.particle.ParticleRenderType {
+  final boolean val$depthWrite;
+
+  final net.minecraft.resources.ResourceLocation val$texture;
+
+  final java.lang.String val$name;
+
+  com.pla.efclash_blade.particle.client.ClashRenderTypes$1();
+    Code:
+       0: aload_0
+       1: iload_1
+       2: putfield      #33                 // Field val$depthWrite:Z
+       5: aload_0
+       6: aload_2
+       7: putfield      #35                 // Field val$texture:Lnet/minecraft/resources/ResourceLocation;
+      10: aload_0
+      11: aload_3
+      12: putfield      #37                 // Field val$name:Ljava/lang/String;
+      15: aload_0
+      16: invokespecial #39                 // Method java/lang/Object."<init>":()V
+      19: return
+    LineNumberTable:
+      line 54: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      20     0  this   Lcom/pla/efclash_blade/particle/client/ClashRenderTypes$1;
+
+  public void m_6505_(com.mojang.blaze3d.vertex.BufferBuilder, net.minecraft.client.renderer.texture.TextureManager);
+    Code:
+       0: invokestatic  #48                 // Method com/mojang/blaze3d/systems/RenderSystem.disableCull:()V
+       3: invokestatic  #51                 // Method com/mojang/blaze3d/systems/RenderSystem.enableBlend:()V
+       6: invokestatic  #54                 // Method com/mojang/blaze3d/systems/RenderSystem.defaultBlendFunc:()V
+       9: aload_0
+      10: getfield      #33                 // Field val$depthWrite:Z
+      13: invokestatic  #58                 // Method com/mojang/blaze3d/systems/RenderSystem.depthMask:(Z)V
+      16: invokedynamic #79,  0             // InvokeDynamic #0:get:()Ljava/util/function/Supplier;
+      21: invokestatic  #83                 // Method com/mojang/blaze3d/systems/RenderSystem.setShader:(Ljava/util/function/Supplier;)V
+      24: iconst_0
+      25: aload_0
+      26: getfield      #35                 // Field val$texture:Lnet/minecraft/resources/ResourceLocation;
+      29: invokestatic  #87                 // Method com/mojang/blaze3d/systems/RenderSystem.setShaderTexture:(ILnet/minecraft/resources/ResourceLocation;)V
+      32: aload_1
+      33: getstatic     #91                 // Field com/mojang/blaze3d/vertex/VertexFormat$Mode.QUADS:Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;
+      36: getstatic     #97                 // Field com/mojang/blaze3d/vertex/DefaultVertexFormat.f_85813_:Lcom/mojang/blaze3d/vertex/VertexFormat;
+      39: invokevirtual #103                // Method com/mojang/blaze3d/vertex/BufferBuilder.m_166779_:(Lcom/mojang/blaze3d/vertex/VertexFormat$Mode;Lcom/mojang/blaze3d/vertex/VertexFormat;)V
+      42: return
+    LineNumberTable:
+      line 57: 0
+      line 58: 3
+      line 59: 6
+      line 60: 9
+      line 61: 16
+      line 62: 24
+      line 63: 32
+      line 64: 42
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      43     0  this   Lcom/pla/efclash_blade/particle/client/ClashRenderTypes$1;
+          0      43     1 builder   Lcom/mojang/blaze3d/vertex/BufferBuilder;
+          0      43     2 textureManager   Lnet/minecraft/client/renderer/texture/TextureManager;
+
+  public void m_6294_(com.mojang.blaze3d.vertex.Tesselator);
+    Code:
+       0: aload_1
+       1: invokevirtual #114                // Method com/mojang/blaze3d/vertex/Tesselator.m_85914_:()V
+       4: iconst_1
+       5: invokestatic  #58                 // Method com/mojang/blaze3d/systems/RenderSystem.depthMask:(Z)V
+       8: invokestatic  #117                // Method com/mojang/blaze3d/systems/RenderSystem.enableCull:()V
+      11: return
+    LineNumberTable:
+      line 68: 0
+      line 69: 4
+      line 70: 8
+      line 71: 11
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      12     0  this   Lcom/pla/efclash_blade/particle/client/ClashRenderTypes$1;
+          0      12     1 tesselator   Lcom/mojang/blaze3d/vertex/Tesselator;
+
+  public java.lang.String toString();
+    Code:
+       0: aload_0
+       1: getfield      #37                 // Field val$name:Ljava/lang/String;
+       4: areturn
+    LineNumberTable:
+      line 75: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/particle/client/ClashRenderTypes$1;
+}

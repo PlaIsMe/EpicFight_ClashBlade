@@ -1,0 +1,146 @@
+Compiled from "ClashSparkParticle.java"
+public class com.pla.efclash_blade.particle.client.ClashSparkParticle extends net.minecraft.client.particle.SingleQuadParticle {
+  protected com.pla.efclash_blade.particle.client.ClashSparkParticle(net.minecraft.client.multiplayer.ClientLevel, double, double, double, double, double, double);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: dload_2
+       3: dload         4
+       5: dload         6
+       7: dload         8
+       9: dload         10
+      11: dload         12
+      13: invokespecial #12                 // Method net/minecraft/client/particle/SingleQuadParticle."<init>":(Lnet/minecraft/client/multiplayer/ClientLevel;DDDDDD)V
+      16: aload_0
+      17: ldc           #13                 // float 0.3f
+      19: ldc           #14                 // float 0.2f
+      21: invokevirtual #18                 // Method m_107250_:(FF)V
+      24: aload_0
+      25: dup
+      26: getfield      #22                 // Field f_107663_:F
+      29: ldc           #23                 // float 0.25f
+      31: fmul
+      32: putfield      #22                 // Field f_107663_:F
+      35: aload_0
+      36: iconst_1
+      37: bipush        23
+      39: aload_0
+      40: getfield      #27                 // Field f_107223_:Lnet/minecraft/util/RandomSource;
+      43: bipush        20
+      45: invokeinterface #33,  2           // InterfaceMethod net/minecraft/util/RandomSource.m_188503_:(I)I
+      50: iadd
+      51: bipush        10
+      53: isub
+      54: invokestatic  #39                 // Method java/lang/Math.max:(II)I
+      57: putfield      #43                 // Field f_107225_:I
+      60: aload_0
+      61: ldc           #44                 // float 0.5f
+      63: putfield      #47                 // Field f_107226_:F
+      66: aload_0
+      67: iconst_1
+      68: putfield      #51                 // Field f_107219_:Z
+      71: aload_0
+      72: ldc           #52                 // float 0.99f
+      74: putfield      #55                 // Field f_107227_:F
+      77: aload_0
+      78: ldc           #52                 // float 0.99f
+      80: putfield      #58                 // Field f_107228_:F
+      83: aload_0
+      84: ldc           #52                 // float 0.99f
+      86: putfield      #61                 // Field f_107229_:F
+      89: aload_0
+      90: dload         8
+      92: putfield      #65                 // Field f_107215_:D
+      95: aload_0
+      96: dload         10
+      98: putfield      #68                 // Field f_107216_:D
+     101: aload_0
+     102: dload         12
+     104: putfield      #71                 // Field f_107217_:D
+     107: return
+    LineNumberTable:
+      line 23: 0
+      line 24: 16
+      line 25: 24
+      line 26: 35
+      line 27: 60
+      line 28: 66
+      line 33: 71
+      line 34: 77
+      line 35: 83
+      line 37: 89
+      line 38: 95
+      line 39: 101
+      line 40: 107
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0     108     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+          0     108     1 level   Lnet/minecraft/client/multiplayer/ClientLevel;
+          0     108     2     x   D
+          0     108     4     y   D
+          0     108     6     z   D
+          0     108     8    vx   D
+          0     108    10    vy   D
+          0     108    12    vz   D
+
+  protected float m_5970_();
+    Code:
+       0: fconst_0
+       1: freturn
+    LineNumberTable:
+      line 45: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+
+  protected float m_5952_();
+    Code:
+       0: fconst_1
+       1: freturn
+    LineNumberTable:
+      line 50: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+
+  protected float m_5951_();
+    Code:
+       0: fconst_0
+       1: freturn
+    LineNumberTable:
+      line 55: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+
+  protected float m_5950_();
+    Code:
+       0: fconst_1
+       1: freturn
+    LineNumberTable:
+      line 60: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+
+  protected int m_6355_(float);
+    Code:
+       0: ldc           #89                 // int 15728880
+       2: ireturn
+    LineNumberTable:
+      line 65: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       3     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+          0       3     1 partialTick   F
+
+  public net.minecraft.client.particle.ParticleRenderType m_7556_();
+    Code:
+       0: getstatic     #98                 // Field com/pla/efclash_blade/particle/client/ClashRenderTypes.SPARK:Lnet/minecraft/client/particle/ParticleRenderType;
+       3: areturn
+    LineNumberTable:
+      line 70: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       4     0  this   Lcom/pla/efclash_blade/particle/client/ClashSparkParticle;
+}

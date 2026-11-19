@@ -1,0 +1,32 @@
+Compiled from "ClashParticleClientSetup.java"
+public final class com.pla.efclash_blade.particle.client.ClashParticleClientSetup {
+  private com.pla.efclash_blade.particle.client.ClashParticleClientSetup();
+    Code:
+       0: aload_0
+       1: invokespecial #31                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 11: 0
+      line 12: 4
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/particle/client/ClashParticleClientSetup;
+
+  public static void onRegisterParticleProviders(net.minecraftforge.client.event.RegisterParticleProvidersEvent);
+    Code:
+       0: aload_0
+       1: getstatic     #42                 // Field com/pla/efclash_blade/particle/EFClashBladeParticles.CLASH_SPARK:Lnet/minecraftforge/registries/RegistryObject;
+       4: invokevirtual #48                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+       7: checkcast     #50                 // class net/minecraft/core/particles/ParticleType
+      10: new           #16                 // class com/pla/efclash_blade/particle/client/ClashSparkParticle$Provider
+      13: dup
+      14: invokespecial #51                 // Method com/pla/efclash_blade/particle/client/ClashSparkParticle$Provider."<init>":()V
+      17: invokevirtual #57                 // Method net/minecraftforge/client/event/RegisterParticleProvidersEvent.registerSpecial:(Lnet/minecraft/core/particles/ParticleType;Lnet/minecraft/client/particle/ParticleProvider;)V
+      20: return
+    LineNumberTable:
+      line 17: 0
+      line 18: 20
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      21     0 event   Lnet/minecraftforge/client/event/RegisterParticleProvidersEvent;
+}

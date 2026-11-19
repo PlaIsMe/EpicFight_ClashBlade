@@ -1,0 +1,81 @@
+Compiled from "CameraEngine.java"
+public class com.pla.efclash_blade.client.CameraEngine$ShakeEntry {
+  double strength;
+
+  int remainingTicks;
+
+  int decay_time;
+
+  double frequency;
+
+  public com.pla.efclash_blade.client.CameraEngine$ShakeEntry(double, int, double, int);
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: dload_1
+       6: putfield      #21                 // Field strength:D
+       9: aload_0
+      10: iload_3
+      11: putfield      #23                 // Field remainingTicks:I
+      14: aload_0
+      15: dload         4
+      17: putfield      #25                 // Field frequency:D
+      20: aload_0
+      21: iload         6
+      23: putfield      #27                 // Field decay_time:I
+      26: return
+    LineNumberTable:
+      line 170: 0
+      line 171: 4
+      line 172: 9
+      line 173: 14
+      line 174: 20
+      line 175: 26
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      27     0  this   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+          0      27     1 strength   D
+          0      27     3  tick   I
+          0      27     4 frequency   D
+          0      27     6 decayTime   I
+
+  public com.pla.efclash_blade.client.CameraEngine$ShakeEntry(double, int, int);
+    Code:
+       0: aload_0
+       1: dload_1
+       2: iload_3
+       3: ldc2_w        #33                 // double 0.3d
+       6: iload         4
+       8: invokespecial #36                 // Method "<init>":(DIDI)V
+      11: return
+    LineNumberTable:
+      line 178: 0
+      line 179: 11
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      12     0  this   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+          0      12     1 strength   D
+          0      12     3  tick   I
+          0      12     4 decayTime   I
+
+  public com.pla.efclash_blade.client.CameraEngine$ShakeEntry copy();
+    Code:
+       0: new           #2                  // class com/pla/efclash_blade/client/CameraEngine$ShakeEntry
+       3: dup
+       4: aload_0
+       5: getfield      #21                 // Field strength:D
+       8: aload_0
+       9: getfield      #23                 // Field remainingTicks:I
+      12: aload_0
+      13: getfield      #25                 // Field frequency:D
+      16: aload_0
+      17: getfield      #27                 // Field decay_time:I
+      20: invokespecial #36                 // Method "<init>":(DIDI)V
+      23: areturn
+    LineNumberTable:
+      line 182: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      24     0  this   Lcom/pla/efclash_blade/client/CameraEngine$ShakeEntry;
+}
