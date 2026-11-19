@@ -1,0 +1,167 @@
+Compiled from "ClashParticleEmitter.java"
+public final class com.pla.efclash_blade.particle.ClashParticleEmitter {
+  private static final double SPARK_SPEED;
+
+  private com.pla.efclash_blade.particle.ClashParticleEmitter();
+    Code:
+       0: aload_0
+       1: invokespecial #13                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 33: 0
+      line 34: 4
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/particle/ClashParticleEmitter;
+
+  public static void spawnEpicFightDefault(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: ifnull        12
+       4: aload_1
+       5: ifnull        12
+       8: aload_2
+       9: ifnonnull     13
+      12: return
+      13: getstatic     #23                 // Field yesman/epicfight/particle/EpicFightParticles.HIT_BLUNT:Lnet/minecraftforge/registries/RegistryObject;
+      16: invokevirtual #29                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      19: checkcast     #31                 // class yesman/epicfight/particle/HitParticleType
+      22: aload_0
+      23: getstatic     #35                 // Field yesman/epicfight/particle/HitParticleType.FRONT_OF_EYES:Ljava/util/function/BiFunction;
+      26: getstatic     #38                 // Field yesman/epicfight/particle/HitParticleType.ZERO:Ljava/util/function/BiFunction;
+      29: aload_1
+      30: aload_2
+      31: invokevirtual #42                 // Method yesman/epicfight/particle/HitParticleType.spawnParticleWithArgument:(Lnet/minecraft/server/level/ServerLevel;Ljava/util/function/BiFunction;Ljava/util/function/BiFunction;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+      34: return
+    LineNumberTable:
+      line 42: 0
+      line 43: 12
+      line 45: 13
+      line 48: 34
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      35     0 level   Lnet/minecraft/server/level/ServerLevel;
+          0      35     1 defender   Lnet/minecraft/world/entity/Entity;
+          0      35     2 attacker   Lnet/minecraft/world/entity/Entity;
+
+  public static void spawn(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: ifnull        12
+       4: aload_1
+       5: ifnull        12
+       8: aload_2
+       9: ifnonnull     13
+      12: return
+      13: aload_0
+      14: aload_1
+      15: aload_2
+      16: invokestatic  #50                 // Method spawnEpicFightDefault:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+      19: invokestatic  #56                 // Method com/pla/efclash_blade/config/EFClashBladeConfig.useEpicFightParticles:()Z
+      22: ifeq          26
+      25: return
+      26: invokestatic  #59                 // Method com/pla/efclash_blade/config/EFClashBladeConfig.clashParticlesEnabled:()Z
+      29: ifeq          40
+      32: aload_0
+      33: aload_1
+      34: invokestatic  #63                 // Method com/pla/efclash_blade/config/EFClashBladeConfig.clashSparkCount:()I
+      37: invokestatic  #67                 // Method spawnSparks:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;I)V
+      40: return
+    LineNumberTable:
+      line 52: 0
+      line 53: 12
+      line 57: 13
+      line 58: 19
+      line 59: 25
+      line 61: 26
+      line 62: 32
+      line 64: 40
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      41     0 level   Lnet/minecraft/server/level/ServerLevel;
+          0      41     1 defender   Lnet/minecraft/world/entity/Entity;
+          0      41     2 attacker   Lnet/minecraft/world/entity/Entity;
+
+  public static void spawnSparks(net.minecraft.server.level.ServerLevel, net.minecraft.world.entity.Entity, int);
+    Code:
+       0: aload_0
+       1: ifnull        19
+       4: aload_1
+       5: ifnull        19
+       8: aload_0
+       9: getfield      #73                 // Field net/minecraft/server/level/ServerLevel.f_46443_:Z
+      12: ifne          19
+      15: iload_2
+      16: ifgt          20
+      19: return
+      20: aload_1
+      21: invokestatic  #77                 // Method clashPosition:(Lnet/minecraft/world/entity/Entity;)Lnet/minecraft/world/phys/Vec3;
+      24: astore_3
+      25: aload_0
+      26: getstatic     #82                 // Field com/pla/efclash_blade/particle/EFClashBladeParticles.CLASH_SPARK:Lnet/minecraftforge/registries/RegistryObject;
+      29: invokevirtual #29                 // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      32: checkcast     #84                 // class net/minecraft/core/particles/SimpleParticleType
+      35: aload_3
+      36: getfield      #89                 // Field net/minecraft/world/phys/Vec3.f_82479_:D
+      39: aload_3
+      40: getfield      #92                 // Field net/minecraft/world/phys/Vec3.f_82480_:D
+      43: aload_3
+      44: getfield      #95                 // Field net/minecraft/world/phys/Vec3.f_82481_:D
+      47: iload_2
+      48: dconst_0
+      49: dconst_0
+      50: dconst_0
+      51: ldc2_w        #8                  // double 0.1d
+      54: invokevirtual #99                 // Method net/minecraft/server/level/ServerLevel.m_8767_:(Lnet/minecraft/core/particles/ParticleOptions;DDDIDDDD)I
+      57: pop
+      58: return
+    LineNumberTable:
+      line 73: 0
+      line 74: 19
+      line 78: 20
+      line 81: 25
+      line 83: 58
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      59     0 level   Lnet/minecraft/server/level/ServerLevel;
+          0      59     1 defender   Lnet/minecraft/world/entity/Entity;
+          0      59     2 sparkCount   I
+         25      34     3   pos   Lnet/minecraft/world/phys/Vec3;
+
+  private static net.minecraft.world.phys.Vec3 clashPosition(net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_0
+       1: invokevirtual #109                // Method net/minecraft/world/entity/Entity.m_146908_:()F
+       4: f2d
+       5: invokestatic  #115                // Method java/lang/Math.toRadians:(D)D
+       8: dstore_1
+       9: dload_1
+      10: invokestatic  #118                // Method java/lang/Math.sin:(D)D
+      13: dneg
+      14: ldc2_w        #119                // double 0.8d
+      17: dmul
+      18: dstore_3
+      19: dload_1
+      20: invokestatic  #123                // Method java/lang/Math.cos:(D)D
+      23: ldc2_w        #119                // double 0.8d
+      26: dmul
+      27: dstore        5
+      29: aload_0
+      30: invokevirtual #127                // Method net/minecraft/world/entity/Entity.m_20182_:()Lnet/minecraft/world/phys/Vec3;
+      33: dload_3
+      34: ldc2_w        #128                // double 1.5d
+      37: dload         5
+      39: invokevirtual #133                // Method net/minecraft/world/phys/Vec3.m_82520_:(DDD)Lnet/minecraft/world/phys/Vec3;
+      42: areturn
+    LineNumberTable:
+      line 86: 0
+      line 87: 9
+      line 88: 19
+      line 89: 29
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      43     0 defender   Lnet/minecraft/world/entity/Entity;
+          9      34     1 radians   D
+         19      24     3 offsetX   D
+         29      14     5 offsetZ   D
+}

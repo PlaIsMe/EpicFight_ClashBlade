@@ -1,0 +1,145 @@
+Compiled from "EFClashBladeSkillCategories.java"
+public final class com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories extends java.lang.Enum<com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories> implements yesman.epicfight.skill.SkillCategory {
+  public static final com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories CLASH_BLADE;
+
+  final boolean shouldSave;
+
+  final boolean shouldSyncronize;
+
+  final boolean modifiable;
+
+  final int id;
+
+  private static final com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories[] $VALUES;
+
+  public static com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories[] values();
+    Code:
+       0: getstatic     #22                 // Field $VALUES:[Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+       3: invokevirtual #27                 // Method "[Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;".clone:()Ljava/lang/Object;
+       6: checkcast     #23                 // class "[Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;"
+       9: areturn
+    LineNumberTable:
+      line 5: 0
+
+  public static com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories valueOf(java.lang.String);
+    Code:
+       0: ldc           #2                  // class com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories
+       2: aload_0
+       3: invokestatic  #32                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: checkcast     #2                  // class com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories
+       9: areturn
+    LineNumberTable:
+      line 5: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      10     0  name   Ljava/lang/String;
+
+  private com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories(boolean, boolean, boolean);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #40                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: aload_0
+       7: iload_3
+       8: putfield      #42                 // Field shouldSave:Z
+      11: aload_0
+      12: iload         4
+      14: putfield      #44                 // Field shouldSyncronize:Z
+      17: aload_0
+      18: iload         5
+      20: putfield      #46                 // Field modifiable:Z
+      23: aload_0
+      24: getstatic     #50                 // Field yesman/epicfight/skill/SkillCategory.ENUM_MANAGER:Lyesman/epicfight/api/utils/ExtendableEnumManager;
+      27: aload_0
+      28: invokevirtual #56                 // Method yesman/epicfight/api/utils/ExtendableEnumManager.assign:(Lyesman/epicfight/api/utils/ExtendableEnum;)I
+      31: putfield      #58                 // Field id:I
+      34: return
+    LineNumberTable:
+      line 14: 0
+      line 15: 6
+      line 16: 11
+      line 17: 17
+      line 18: 23
+      line 19: 34
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      35     0  this   Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+          0      35     3  flag   Z
+          0      35     4 flag1   Z
+          0      35     5 flag2   Z
+
+  public boolean shouldSave();
+    Code:
+       0: aload_0
+       1: getfield      #42                 // Field shouldSave:Z
+       4: ireturn
+    LineNumberTable:
+      line 22: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+
+  public boolean shouldSynchronize();
+    Code:
+       0: aload_0
+       1: getfield      #44                 // Field shouldSyncronize:Z
+       4: ireturn
+    LineNumberTable:
+      line 26: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+
+  public boolean learnable();
+    Code:
+       0: aload_0
+       1: getfield      #46                 // Field modifiable:Z
+       4: ireturn
+    LineNumberTable:
+      line 30: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+
+  public int universalOrdinal();
+    Code:
+       0: aload_0
+       1: getfield      #58                 // Field id:I
+       4: ireturn
+    LineNumberTable:
+      line 34: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+
+  private static com.pla.efclash_blade.gameasset.EFClashBladeSkillCategories[] $values();
+    Code:
+       0: iconst_1
+       1: anewarray     #2                  // class com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories
+       4: dup
+       5: iconst_0
+       6: getstatic     #70                 // Field CLASH_BLADE:Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+       9: aastore
+      10: areturn
+    LineNumberTable:
+      line 5: 0
+
+  static {};
+    Code:
+       0: new           #2                  // class com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories
+       3: dup
+       4: ldc           #73                 // String CLASH_BLADE
+       6: iconst_0
+       7: iconst_1
+       8: iconst_1
+       9: iconst_1
+      10: invokespecial #75                 // Method "<init>":(Ljava/lang/String;IZZZ)V
+      13: putstatic     #70                 // Field CLASH_BLADE:Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+      16: invokestatic  #77                 // Method $values:()[Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+      19: putstatic     #22                 // Field $VALUES:[Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+      22: return
+    LineNumberTable:
+      line 7: 0
+      line 5: 16
+}

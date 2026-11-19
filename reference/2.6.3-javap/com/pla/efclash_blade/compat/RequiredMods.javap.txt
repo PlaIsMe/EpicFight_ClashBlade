@@ -1,0 +1,227 @@
+Compiled from "RequiredMods.java"
+public final class com.pla.efclash_blade.compat.RequiredMods {
+  public static final java.util.List<java.lang.String> REQUIRED_MODS;
+
+  private com.pla.efclash_blade.compat.RequiredMods();
+    Code:
+       0: aload_0
+       1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 26: 0
+      line 27: 4
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/compat/RequiredMods;
+
+  public static java.lang.String problem(net.minecraftforge.network.ConnectionData, java.lang.String, java.lang.String);
+    Code:
+       0: new           #24                 // class java/util/ArrayList
+       3: dup
+       4: invokespecial #25                 // Method java/util/ArrayList."<init>":()V
+       7: astore_3
+       8: aload_0
+       9: ifnonnull     28
+      12: aload_3
+      13: aload_2
+      14: invokedynamic #37,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      19: invokeinterface #43,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      24: pop
+      25: goto          178
+      28: getstatic     #45                 // Field REQUIRED_MODS:Ljava/util/List;
+      31: invokeinterface #49,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      36: astore        4
+      38: aload         4
+      40: invokeinterface #55,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      45: ifeq          178
+      48: aload         4
+      50: invokeinterface #59,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      55: checkcast     #61                 // class java/lang/String
+      58: astore        5
+      60: aload         5
+      62: invokestatic  #64                 // Method localVersion:(Ljava/lang/String;)Ljava/lang/String;
+      65: astore        6
+      67: aload         6
+      69: ifnonnull     93
+      72: aload_3
+      73: aload_1
+      74: aload         5
+      76: invokestatic  #67                 // Method displayName:(Ljava/lang/String;)Ljava/lang/String;
+      79: invokedynamic #72,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      84: invokeinterface #43,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      89: pop
+      90: goto          38
+      93: aload_0
+      94: invokevirtual #78                 // Method net/minecraftforge/network/ConnectionData.getModData:()Lcom/google/common/collect/ImmutableMap;
+      97: aload         5
+      99: invokevirtual #84                 // Method com/google/common/collect/ImmutableMap.get:(Ljava/lang/Object;)Ljava/lang/Object;
+     102: checkcast     #86                 // class org/apache/commons/lang3/tuple/Pair
+     105: astore        7
+     107: aload         7
+     109: ifnonnull     133
+     112: aload_3
+     113: aload_2
+     114: aload         5
+     116: invokestatic  #67                 // Method displayName:(Ljava/lang/String;)Ljava/lang/String;
+     119: invokedynamic #72,  0             // InvokeDynamic #1:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     124: invokeinterface #43,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     129: pop
+     130: goto          175
+     133: aload         6
+     135: aload         7
+     137: invokevirtual #89                 // Method org/apache/commons/lang3/tuple/Pair.getRight:()Ljava/lang/Object;
+     140: invokevirtual #92                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     143: ifne          175
+     146: aload_3
+     147: aload         5
+     149: invokestatic  #67                 // Method displayName:(Ljava/lang/String;)Ljava/lang/String;
+     152: aload_1
+     153: aload         6
+     155: aload_2
+     156: aload         7
+     158: invokevirtual #89                 // Method org/apache/commons/lang3/tuple/Pair.getRight:()Ljava/lang/Object;
+     161: checkcast     #61                 // class java/lang/String
+     164: invokedynamic #97,  0             // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     169: invokeinterface #43,  2           // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     174: pop
+     175: goto          38
+     178: aload_3
+     179: invokeinterface #100,  1          // InterfaceMethod java/util/List.isEmpty:()Z
+     184: ifeq          191
+     187: aconst_null
+     188: goto          197
+     191: ldc           #102                // String ；
+     193: aload_3
+     194: invokestatic  #106                // Method java/lang/String.join:(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
+     197: areturn
+    LineNumberTable:
+      line 36: 0
+      line 37: 8
+      line 38: 12
+      line 41: 28
+      line 42: 60
+      line 43: 67
+      line 44: 72
+      line 45: 90
+      line 47: 93
+      line 48: 107
+      line 49: 112
+      line 50: 133
+      line 51: 146
+      line 53: 158
+      line 51: 169
+      line 55: 175
+      line 57: 178
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         67     108     6 localVersion   Ljava/lang/String;
+        107      68     7 remote   Lorg/apache/commons/lang3/tuple/Pair;
+         60     115     5 modId   Ljava/lang/String;
+          0     198     0  data   Lnet/minecraftforge/network/ConnectionData;
+          0     198     1 localSide   Ljava/lang/String;
+          0     198     2 remoteSide   Ljava/lang/String;
+          8     190     3 problems   Ljava/util/List;
+
+  public static net.minecraft.network.chat.Component kickMessage(java.lang.String);
+    Code:
+       0: aload_0
+       1: invokedynamic #121,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+       6: invokestatic  #127                // InterfaceMethod net/minecraft/network/chat/Component.m_237113_:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       9: areturn
+    LineNumberTable:
+      line 61: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      10     0 problem   Ljava/lang/String;
+
+  public static java.lang.String displayName(java.lang.String);
+    Code:
+       0: aload_0
+       1: astore_1
+       2: iconst_m1
+       3: istore_2
+       4: aload_1
+       5: invokevirtual #131                // Method java/lang/String.hashCode:()I
+       8: lookupswitch  { // 2
+            -885552251: 50
+            1784191554: 36
+               default: 61
+          }
+      36: aload_1
+      37: ldc           #133                // String avlegacyitems
+      39: invokevirtual #92                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      42: ifeq          61
+      45: iconst_0
+      46: istore_2
+      47: goto          61
+      50: aload_1
+      51: ldc           #135                // String efclash_blade
+      53: invokevirtual #92                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      56: ifeq          61
+      59: iconst_1
+      60: istore_2
+      61: iload_2
+      62: lookupswitch  { // 2
+                     0: 88
+                     1: 93
+               default: 98
+          }
+      88: ldc           #137                // String AVLegacyItems
+      90: goto          99
+      93: ldc           #139                // String Epicfight Clash Blade
+      95: goto          99
+      98: aload_0
+      99: areturn
+    LineNumberTable:
+      line 69: 0
+      line 70: 88
+      line 71: 93
+      line 72: 98
+      line 69: 99
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0     100     0 modId   Ljava/lang/String;
+
+  private static java.lang.String localVersion(java.lang.String);
+    Code:
+       0: invokestatic  #144                // Method net/minecraftforge/fml/ModList.get:()Lnet/minecraftforge/fml/ModList;
+       3: aload_0
+       4: invokevirtual #148                // Method net/minecraftforge/fml/ModList.getModContainerById:(Ljava/lang/String;)Ljava/util/Optional;
+       7: invokedynamic #166,  0            // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      12: invokevirtual #172                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      15: aconst_null
+      16: invokevirtual #175                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      19: checkcast     #61                 // class java/lang/String
+      22: areturn
+    LineNumberTable:
+      line 78: 0
+      line 79: 12
+      line 80: 16
+      line 78: 22
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      23     0 modId   Ljava/lang/String;
+
+  private static java.lang.String lambda$localVersion$0(net.minecraftforge.fml.ModContainer);
+    Code:
+       0: aload_0
+       1: invokevirtual #181                // Method net/minecraftforge/fml/ModContainer.getModInfo:()Lnet/minecraftforge/forgespi/language/IModInfo;
+       4: invokeinterface #187,  1          // InterfaceMethod net/minecraftforge/forgespi/language/IModInfo.getVersion:()Lorg/apache/maven/artifact/versioning/ArtifactVersion;
+       9: invokevirtual #191                // Method java/lang/Object.toString:()Ljava/lang/String;
+      12: areturn
+    LineNumberTable:
+      line 79: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      13     0 container   Lnet/minecraftforge/fml/ModContainer;
+
+  static {};
+    Code:
+       0: ldc           #133                // String avlegacyitems
+       2: ldc           #135                // String efclash_blade
+       4: invokestatic  #198                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;Ljava/lang/Object;)Ljava/util/List;
+       7: putstatic     #45                 // Field REQUIRED_MODS:Ljava/util/List;
+      10: return
+    LineNumberTable:
+      line 23: 0
+}

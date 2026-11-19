@@ -1,6 +1,7 @@
-.gradle
-.idea
-build
-run
-bin
-libs
+.gradle/
+build/
+out/
+run/
+run-data/
+.idea/
+*.iml

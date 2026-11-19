@@ -1,0 +1,41 @@
+Compiled from "EFClashBladeSkills.java"
+public class com.pla.efclash_blade.gameasset.EFClashBladeSkills {
+  public static yesman.epicfight.skill.Skill CLASH_BLADE;
+
+  public com.pla.efclash_blade.gameasset.EFClashBladeSkills();
+    Code:
+       0: aload_0
+       1: invokespecial #35                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 12: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/gameasset/EFClashBladeSkills;
+
+  public static void buildSkillEvent(yesman.epicfight.api.forgeevent.SkillBuildEvent);
+    Code:
+       0: aload_0
+       1: ldc           #41                 // String efclash_blade
+       3: invokevirtual #45                 // Method yesman/epicfight/api/forgeevent/SkillBuildEvent.createRegistryWorker:(Ljava/lang/String;)Lyesman/epicfight/api/forgeevent/SkillBuildEvent$ModRegistryWorker;
+       6: astore_1
+       7: aload_1
+       8: ldc           #47                 // String clash_blade
+      10: invokedynamic #68,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      15: invokestatic  #74                 // Method yesman/epicfight/skill/passive/PassiveSkill.createPassiveBuilder:()Lyesman/epicfight/skill/SkillBuilder;
+      18: getstatic     #79                 // Field com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories.CLASH_BLADE:Lcom/pla/efclash_blade/gameasset/EFClashBladeSkillCategories;
+      21: invokevirtual #85                 // Method yesman/epicfight/skill/SkillBuilder.setCategory:(Lyesman/epicfight/skill/SkillCategory;)Lyesman/epicfight/skill/SkillBuilder;
+      24: invokevirtual #89                 // Method yesman/epicfight/api/forgeevent/SkillBuildEvent$ModRegistryWorker.build:(Ljava/lang/String;Ljava/util/function/Function;Lyesman/epicfight/skill/SkillBuilder;)Lyesman/epicfight/skill/Skill;
+      27: putstatic     #91                 // Field CLASH_BLADE:Lyesman/epicfight/skill/Skill;
+      30: return
+    LineNumberTable:
+      line 17: 0
+      line 18: 7
+      line 19: 21
+      line 18: 24
+      line 20: 30
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      31     0 skillbuildevent   Lyesman/epicfight/api/forgeevent/SkillBuildEvent;
+          7      24     1 modRegistry   Lyesman/epicfight/api/forgeevent/SkillBuildEvent$ModRegistryWorker;
+}

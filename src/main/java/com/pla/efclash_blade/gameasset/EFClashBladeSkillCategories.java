@@ -3,7 +3,6 @@ package com.pla.efclash_blade.gameasset;
 import yesman.epicfight.skill.SkillCategory;
 
 public enum EFClashBladeSkillCategories implements SkillCategory {
-
     CLASH_BLADE(true, true, true);
 
     final boolean shouldSave;
@@ -18,19 +17,8 @@ public enum EFClashBladeSkillCategories implements SkillCategory {
         this.id = SkillCategory.ENUM_MANAGER.assign(this);
     }
 
-    public boolean shouldSave() {
-        return this.shouldSave;
-    }
-
-    public boolean shouldSynchronize() {
-        return this.shouldSyncronize;
-    }
-
-    public boolean learnable() {
-        return this.modifiable;
-    }
-
-    public int universalOrdinal() {
-        return this.id;
-    }
+    public boolean shouldSave() { return this.shouldSave; }
+    public boolean shouldSynchronize() { return this.shouldSyncronize; }
+    public boolean learnable() { return this.modifiable; }
+    public int universalOrdinal() { return this.id; }
 }

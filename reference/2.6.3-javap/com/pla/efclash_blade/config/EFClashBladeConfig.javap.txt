@@ -1,0 +1,371 @@
+Compiled from "EFClashBladeConfig.java"
+public class com.pla.efclash_blade.config.EFClashBladeConfig {
+  public static final net.minecraftforge.common.ForgeConfigSpec$Builder BUILDER;
+
+  public static final net.minecraftforge.common.ForgeConfigSpec SPEC;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.util.List<? extends java.lang.String>> BLACK_LIST;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Integer> BREAK_WEAPON_VALUE_ON_CLASH;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Double> CLASH_CHANCE;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Boolean> SHAKE_SCREEN;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Boolean> CLIENT_SHAKE_SCREEN;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Boolean> USE_EPICFIGHT_PARTICLES;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Boolean> CLASH_PARTICLES;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Integer> CLASH_SPARK_COUNT;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Boolean> GUARD_PARTICLES;
+
+  public static net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Integer> GUARD_SPARK_COUNT;
+
+  public com.pla.efclash_blade.config.EFClashBladeConfig();
+    Code:
+       0: aload_0
+       1: invokespecial #50                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 7: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/config/EFClashBladeConfig;
+
+  private static boolean flag(net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Boolean>, boolean);
+    Code:
+       0: aload_0
+       1: invokevirtual #61                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+       4: checkcast     #63                 // class java/lang/Boolean
+       7: invokevirtual #67                 // Method java/lang/Boolean.booleanValue:()Z
+      10: ireturn
+      11: astore_2
+      12: iload_1
+      13: ireturn
+    Exception table:
+       from    to  target type
+           0    10    11   Class java/lang/RuntimeException
+    LineNumberTable:
+      line 74: 0
+      line 75: 11
+      line 76: 12
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         12       2     2 exception   Ljava/lang/RuntimeException;
+          0      14     0 value   Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+          0      14     1 fallback   Z
+
+  private static int number(net.minecraftforge.common.ForgeConfigSpec$ConfigValue<java.lang.Integer>, int);
+    Code:
+       0: aload_0
+       1: invokevirtual #61                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+       4: checkcast     #77                 // class java/lang/Integer
+       7: invokevirtual #81                 // Method java/lang/Integer.intValue:()I
+      10: ireturn
+      11: astore_2
+      12: iload_1
+      13: ireturn
+    Exception table:
+       from    to  target type
+           0    10    11   Class java/lang/RuntimeException
+    LineNumberTable:
+      line 82: 0
+      line 83: 11
+      line 84: 12
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         12       2     2 exception   Ljava/lang/RuntimeException;
+          0      14     0 value   Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+          0      14     1 fallback   I
+
+  public static boolean clashParticlesEnabled();
+    Code:
+       0: getstatic     #85                 // Field CLASH_PARTICLES:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       3: iconst_1
+       4: invokestatic  #87                 // Method flag:(Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;Z)Z
+       7: ireturn
+    LineNumberTable:
+      line 89: 0
+
+  public static int clashSparkCount();
+    Code:
+       0: iconst_0
+       1: getstatic     #90                 // Field CLASH_SPARK_COUNT:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       4: bipush        100
+       6: invokestatic  #92                 // Method number:(Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;I)I
+       9: invokestatic  #98                 // Method java/lang/Math.max:(II)I
+      12: ireturn
+    LineNumberTable:
+      line 93: 0
+
+  public static boolean guardParticlesEnabled();
+    Code:
+       0: getstatic     #101                // Field GUARD_PARTICLES:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       3: iconst_1
+       4: invokestatic  #87                 // Method flag:(Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;Z)Z
+       7: ireturn
+    LineNumberTable:
+      line 97: 0
+
+  public static int guardSparkCount();
+    Code:
+       0: iconst_0
+       1: getstatic     #104                // Field GUARD_SPARK_COUNT:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       4: bipush        100
+       6: invokestatic  #92                 // Method number:(Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;I)I
+       9: invokestatic  #98                 // Method java/lang/Math.max:(II)I
+      12: ireturn
+    LineNumberTable:
+      line 101: 0
+
+  public static boolean clientShakeScreenEnabled();
+    Code:
+       0: getstatic     #107                // Field CLIENT_SHAKE_SCREEN:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       3: iconst_0
+       4: invokestatic  #87                 // Method flag:(Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;Z)Z
+       7: ireturn
+    LineNumberTable:
+      line 105: 0
+
+  public static boolean useEpicFightParticles();
+    Code:
+       0: getstatic     #110                // Field USE_EPICFIGHT_PARTICLES:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       3: iconst_1
+       4: invokestatic  #87                 // Method flag:(Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;Z)Z
+       7: ireturn
+    LineNumberTable:
+      line 109: 0
+
+  private static boolean lambda$static$0(java.lang.Object);
+    Code:
+       0: aload_0
+       1: instanceof    #114                // class java/lang/String
+       4: ireturn
+    LineNumberTable:
+      line 27: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0 entry   Ljava/lang/Object;
+
+  static {};
+    Code:
+       0: new           #12                 // class net/minecraftforge/common/ForgeConfigSpec$Builder
+       3: dup
+       4: invokespecial #118                // Method net/minecraftforge/common/ForgeConfigSpec$Builder."<init>":()V
+       7: putstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      10: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      13: iconst_3
+      14: anewarray     #114                // class java/lang/String
+      17: dup
+      18: iconst_0
+      19: ldc           #122                // String A list of entities that can\'t do Clash Blade
+      21: aastore
+      22: dup
+      23: iconst_1
+      24: ldc           #124                // String Input: [\"minecraft\"] will disable Clash Blade for all of entities from Minecraft
+      26: aastore
+      27: dup
+      28: iconst_2
+      29: ldc           #126                // String Input: [\"minecraft:zombie\"] will disable Clash Blade for zombie entity from Minecraft.
+      31: aastore
+      32: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      35: ldc           #132                // String blackList
+      37: ldc           #134                // String nightfall_invade
+      39: invokestatic  #140                // InterfaceMethod java/util/List.of:(Ljava/lang/Object;)Ljava/util/List;
+      42: invokedynamic #155,  0            // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      47: invokevirtual #159                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.defineList:(Ljava/lang/String;Ljava/util/List;Ljava/util/function/Predicate;)Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+      50: putstatic     #161                // Field BLACK_LIST:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+      53: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      56: iconst_2
+      57: anewarray     #114                // class java/lang/String
+      60: dup
+      61: iconst_0
+      62: ldc           #163                // String The value for breaking weapon value for each successfullly clashing
+      64: aastore
+      65: dup
+      66: iconst_1
+      67: ldc           #165                // String Set to 0 to disable.
+      69: aastore
+      70: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      73: ldc           #167                // String breakWeaponValueOnClash
+      75: iconst_1
+      76: iconst_0
+      77: sipush        10000
+      80: invokevirtual #171                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.defineInRange:(Ljava/lang/String;III)Lnet/minecraftforge/common/ForgeConfigSpec$IntValue;
+      83: putstatic     #173                // Field BREAK_WEAPON_VALUE_ON_CLASH:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+      86: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      89: ldc           #175                // String Chance for clashing
+      91: invokevirtual #178                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+      94: ldc           #180                // String clashChance
+      96: dconst_1
+      97: dconst_0
+      98: dconst_1
+      99: invokevirtual #183                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.defineInRange:(Ljava/lang/String;DDD)Lnet/minecraftforge/common/ForgeConfigSpec$DoubleValue;
+     102: putstatic     #185                // Field CLASH_CHANCE:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     105: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     108: ldc           #187                // String Server-side switch: send screen-shake packets on clashing.
+     110: invokevirtual #178                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:(Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     113: ldc           #189                // String shakeScreen
+     115: iconst_1
+     116: invokevirtual #193                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+     119: putstatic     #195                // Field SHAKE_SCREEN:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     122: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     125: iconst_3
+     126: anewarray     #114                // class java/lang/String
+     129: dup
+     130: iconst_0
+     131: ldc           #197                // String Client-side master switch for the clash screen shake.
+     133: aastore
+     134: dup
+     135: iconst_1
+     136: ldc           #199                // String false ignores every incoming shake packet, even if the server enables shakeScreen.
+     138: aastore
+     139: dup
+     140: iconst_2
+     141: ldc           #201                // String Set true to enable the effect; the screen never shakes while a GUI is open.
+     143: aastore
+     144: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     147: ldc           #203                // String clientShakeScreen
+     149: iconst_0
+     150: invokevirtual #193                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+     153: putstatic     #107                // Field CLIENT_SHAKE_SCREEN:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     156: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     159: iconst_5
+     160: anewarray     #114                // class java/lang/String
+     163: dup
+     164: iconst_0
+     165: ldc           #205                // String Use only Epic Fight\'s own hit_blunt particle (the default clash/guard hit effect).
+     167: aastore
+     168: dup
+     169: iconst_1
+     170: ldc           #207                // String true  = Epic Fight hit_blunt particle; no spark burst.
+     172: aastore
+     173: dup
+     174: iconst_2
+     175: ldc           #209                // String false = Epic Fight hit_blunt particle + the custom orange spark burst;
+     177: aastore
+     178: dup
+     179: iconst_3
+     180: ldc           #211                // String         the clashParticles / replaceGuardParticles options below apply.
+     182: aastore
+     183: dup
+     184: iconst_4
+     185: ldc           #213                // String The old 1.18.2 white hit flash and the clash_glow halo were removed in 2.6.3.
+     187: aastore
+     188: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     191: ldc           #214                // String useEpicFightParticles
+     193: iconst_1
+     194: invokevirtual #193                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+     197: putstatic     #110                // Field USE_EPICFIGHT_PARTICLES:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     200: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     203: iconst_3
+     204: anewarray     #114                // class java/lang/String
+     207: dup
+     208: iconst_0
+     209: ldc           #216                // String Add the orange spark burst to a successful clash.
+     211: aastore
+     212: dup
+     213: iconst_1
+     214: ldc           #218                // String The impact itself always uses Epic Fight\'s hit_blunt particle; only the sparks are custom.
+     216: aastore
+     217: dup
+     218: iconst_2
+     219: ldc           #220                // String The original 1.18.2 spark texture is kept; it is marked emissive for the pack\'s shader.
+     221: aastore
+     222: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     225: ldc           #222                // String clashParticles
+     227: iconst_1
+     228: invokevirtual #193                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+     231: putstatic     #85                 // Field CLASH_PARTICLES:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     234: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     237: iconst_3
+     238: anewarray     #114                // class java/lang/String
+     241: dup
+     242: iconst_0
+     243: ldc           #224                // String How many sparks burst out of one clash.
+     245: aastore
+     246: dup
+     247: iconst_1
+     248: ldc           #226                // String 100 is the original 1.18.2 reference value (all spawned in one point, speed 0.1).
+     250: aastore
+     251: dup
+     252: iconst_2
+     253: ldc           #228                // String Set to 0 to keep only the Epic Fight hit_blunt particle.
+     255: aastore
+     256: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     259: ldc           #229                // String clashSparkCount
+     261: bipush        100
+     263: iconst_0
+     264: sipush        400
+     267: invokevirtual #171                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.defineInRange:(Ljava/lang/String;III)Lnet/minecraftforge/common/ForgeConfigSpec$IntValue;
+     270: putstatic     #90                 // Field CLASH_SPARK_COUNT:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     273: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     276: iconst_3
+     277: anewarray     #114                // class java/lang/String
+     280: dup
+     281: iconst_0
+     282: ldc           #231                // String Add the same orange spark burst to Epic Fight\'s own guard / parry hit particle
+     284: aastore
+     285: dup
+     286: iconst_1
+     287: ldc           #233                // String (epicfight:hit_blunt). The hit particle itself is never replaced.
+     289: aastore
+     290: dup
+     291: iconst_2
+     292: ldc           #235                // String This covers both the normal Guard skill and the Parrying skill.
+     294: aastore
+     295: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     298: ldc           #237                // String replaceGuardParticles
+     300: iconst_1
+     301: invokevirtual #193                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.define:(Ljava/lang/String;Z)Lnet/minecraftforge/common/ForgeConfigSpec$BooleanValue;
+     304: putstatic     #101                // Field GUARD_PARTICLES:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     307: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     310: iconst_2
+     311: anewarray     #114                // class java/lang/String
+     314: dup
+     315: iconst_0
+     316: ldc           #239                // String How many sparks burst out of one blocked / parried hit.
+     318: aastore
+     319: dup
+     320: iconst_1
+     321: ldc           #241                // String 100 is the original 1.18.2 reference value.
+     323: aastore
+     324: invokevirtual #130                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.comment:([Ljava/lang/String;)Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     327: ldc           #242                // String guardSparkCount
+     329: bipush        100
+     331: iconst_0
+     332: sipush        400
+     335: invokevirtual #171                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.defineInRange:(Ljava/lang/String;III)Lnet/minecraftforge/common/ForgeConfigSpec$IntValue;
+     338: putstatic     #104                // Field GUARD_SPARK_COUNT:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     341: getstatic     #120                // Field BUILDER:Lnet/minecraftforge/common/ForgeConfigSpec$Builder;
+     344: invokevirtual #246                // Method net/minecraftforge/common/ForgeConfigSpec$Builder.build:()Lnet/minecraftforge/common/ForgeConfigSpec;
+     347: putstatic     #248                // Field SPEC:Lnet/minecraftforge/common/ForgeConfigSpec;
+     350: return
+    LineNumberTable:
+      line 8: 0
+      line 23: 10
+      line 27: 39
+      line 28: 53
+      line 31: 80
+      line 32: 86
+      line 34: 99
+      line 35: 105
+      line 37: 116
+      line 38: 122
+      line 42: 150
+      line 43: 156
+      line 49: 194
+      line 50: 200
+      line 54: 228
+      line 55: 234
+      line 59: 267
+      line 60: 273
+      line 64: 301
+      line 65: 307
+      line 68: 335
+      line 69: 341
+      line 70: 350
+}

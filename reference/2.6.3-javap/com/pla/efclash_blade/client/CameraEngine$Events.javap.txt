@@ -1,0 +1,90 @@
+Compiled from "CameraEngine.java"
+public class com.pla.efclash_blade.client.CameraEngine$Events {
+  public com.pla.efclash_blade.client.CameraEngine$Events();
+    Code:
+       0: aload_0
+       1: invokespecial #46                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 131: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/client/CameraEngine$Events;
+
+  public static void cameraSetupEvent(net.minecraftforge.client.event.ViewportEvent$ComputeCameraAngles);
+    Code:
+       0: invokestatic  #60                 // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+       3: getfield      #64                 // Field net/minecraft/client/Minecraft.f_91074_:Lnet/minecraft/client/player/LocalPlayer;
+       6: astore_1
+       7: aload_1
+       8: ifnull        17
+      11: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+      14: ifnonnull     18
+      17: return
+      18: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+      21: aload_0
+      22: aload_1
+      23: invokevirtual #74                 // Method com/pla/efclash_blade/client/CameraEngine.applyShake:(Lnet/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles;Lnet/minecraft/world/entity/player/Player;)V
+      26: return
+    LineNumberTable:
+      line 134: 0
+      line 135: 7
+      line 136: 17
+      line 138: 18
+      line 139: 26
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      27     0 event   Lnet/minecraftforge/client/event/ViewportEvent$ComputeCameraAngles;
+          7      20     1 player   Lnet/minecraft/world/entity/player/Player;
+
+  public static void clientTick(net.minecraftforge.event.TickEvent$ClientTickEvent);
+    Code:
+       0: aload_0
+       1: getfield      #84                 // Field net/minecraftforge/event/TickEvent$ClientTickEvent.phase:Lnet/minecraftforge/event/TickEvent$Phase;
+       4: getstatic     #87                 // Field net/minecraftforge/event/TickEvent$Phase.END:Lnet/minecraftforge/event/TickEvent$Phase;
+       7: if_acmpne     16
+      10: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+      13: ifnonnull     17
+      16: return
+      17: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+      20: invokevirtual #90                 // Method com/pla/efclash_blade/client/CameraEngine.tickTimers:()V
+      23: return
+    LineNumberTable:
+      line 143: 0
+      line 144: 16
+      line 146: 17
+      line 147: 23
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      24     0 event   Lnet/minecraftforge/event/TickEvent$ClientTickEvent;
+
+  public static void screenOpening(net.minecraftforge.client.event.ScreenEvent$Opening);
+    Code:
+       0: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+       3: ifnull        12
+       6: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+       9: invokevirtual #96                 // Method com/pla/efclash_blade/client/CameraEngine.clear:()V
+      12: return
+    LineNumberTable:
+      line 151: 0
+      line 152: 6
+      line 154: 12
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      13     0 event   Lnet/minecraftforge/client/event/ScreenEvent$Opening;
+
+  public static void loggingOut(net.minecraftforge.client.event.ClientPlayerNetworkEvent$LoggingOut);
+    Code:
+       0: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+       3: ifnull        12
+       6: getstatic     #68                 // Field com/pla/efclash_blade/client/CameraEngine.instance:Lcom/pla/efclash_blade/client/CameraEngine;
+       9: invokevirtual #96                 // Method com/pla/efclash_blade/client/CameraEngine.clear:()V
+      12: return
+    LineNumberTable:
+      line 158: 0
+      line 159: 6
+      line 161: 12
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      13     0 event   Lnet/minecraftforge/client/event/ClientPlayerNetworkEvent$LoggingOut;
+}

@@ -1,0 +1,161 @@
+Compiled from "ClientRequiredModsGuard.java"
+public final class com.pla.efclash_blade.client.ClientRequiredModsGuard {
+  private static final int HANDSHAKE_TIMEOUT_TICKS;
+
+  private static int waitedTicks;
+
+  private static boolean checked;
+
+  private com.pla.efclash_blade.client.ClientRequiredModsGuard();
+    Code:
+       0: aload_0
+       1: invokespecial #48                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 30: 0
+      line 31: 4
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/client/ClientRequiredModsGuard;
+
+  public static void onClientTick(net.minecraftforge.event.TickEvent$ClientTickEvent);
+    Code:
+       0: aload_0
+       1: getfield      #57                 // Field net/minecraftforge/event/TickEvent$ClientTickEvent.phase:Lnet/minecraftforge/event/TickEvent$Phase;
+       4: getstatic     #60                 // Field net/minecraftforge/event/TickEvent$Phase.END:Lnet/minecraftforge/event/TickEvent$Phase;
+       7: if_acmpeq     11
+      10: return
+      11: invokestatic  #66                 // Method net/minecraft/client/Minecraft.m_91087_:()Lnet/minecraft/client/Minecraft;
+      14: astore_1
+      15: aload_1
+      16: invokevirtual #70                 // Method net/minecraft/client/Minecraft.m_91091_:()Z
+      19: ifeq          26
+      22: invokestatic  #73                 // Method reset:()V
+      25: return
+      26: aload_1
+      27: getfield      #77                 // Field net/minecraft/client/Minecraft.f_91074_:Lnet/minecraft/client/player/LocalPlayer;
+      30: ifnull        40
+      33: aload_1
+      34: invokevirtual #81                 // Method net/minecraft/client/Minecraft.m_91403_:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      37: ifnonnull     41
+      40: return
+      41: getstatic     #83                 // Field checked:Z
+      44: ifeq          48
+      47: return
+      48: aload_1
+      49: invokevirtual #81                 // Method net/minecraft/client/Minecraft.m_91403_:()Lnet/minecraft/client/multiplayer/ClientPacketListener;
+      52: invokevirtual #89                 // Method net/minecraft/client/multiplayer/ClientPacketListener.m_104910_:()Lnet/minecraft/network/Connection;
+      55: astore_2
+      56: aload_2
+      57: invokevirtual #94                 // Method net/minecraft/network/Connection.m_129536_:()Z
+      60: ifne          64
+      63: return
+      64: aload_2
+      65: invokestatic  #100                // Method net/minecraftforge/network/NetworkHooks.getConnectionData:(Lnet/minecraft/network/Connection;)Lnet/minecraftforge/network/ConnectionData;
+      68: astore_3
+      69: aload_3
+      70: ifnonnull     109
+      73: getstatic     #102                // Field waitedTicks:I
+      76: iconst_1
+      77: iadd
+      78: dup
+      79: putstatic     #102                // Field waitedTicks:I
+      82: bipush        100
+      84: if_icmpge     88
+      87: return
+      88: iconst_1
+      89: putstatic     #83                 // Field checked:Z
+      92: aload_2
+      93: invokevirtual #108                // Method net/minecraft/network/Connection.m_129539_:()Lnet/minecraft/network/chat/Component;
+      96: ifnonnull     108
+      99: aload_2
+     100: ldc           #110                // String 无法读取服务器的模组列表（服务器未安装 Forge 模组，或 FML 握手未完成）
+     102: invokestatic  #116                // Method com/pla/efclash_blade/compat/RequiredMods.kickMessage:(Ljava/lang/String;)Lnet/minecraft/network/chat/Component;
+     105: invokevirtual #120                // Method net/minecraft/network/Connection.m_129507_:(Lnet/minecraft/network/chat/Component;)V
+     108: return
+     109: iconst_1
+     110: putstatic     #83                 // Field checked:Z
+     113: aload_3
+     114: ldc           #122                // String 客户端
+     116: ldc           #124                // String 服务器
+     118: invokestatic  #128                // Method com/pla/efclash_blade/compat/RequiredMods.problem:(Lnet/minecraftforge/network/ConnectionData;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+     121: astore        4
+     123: aload         4
+     125: ifnull        144
+     128: aload_2
+     129: invokevirtual #108                // Method net/minecraft/network/Connection.m_129539_:()Lnet/minecraft/network/chat/Component;
+     132: ifnonnull     144
+     135: aload_2
+     136: aload         4
+     138: invokestatic  #116                // Method com/pla/efclash_blade/compat/RequiredMods.kickMessage:(Ljava/lang/String;)Lnet/minecraft/network/chat/Component;
+     141: invokevirtual #120                // Method net/minecraft/network/Connection.m_129507_:(Lnet/minecraft/network/chat/Component;)V
+     144: return
+    LineNumberTable:
+      line 35: 0
+      line 36: 10
+      line 38: 11
+      line 39: 15
+      line 40: 22
+      line 41: 25
+      line 43: 26
+      line 44: 40
+      line 46: 41
+      line 47: 47
+      line 50: 48
+      line 51: 56
+      line 52: 63
+      line 54: 64
+      line 55: 69
+      line 56: 73
+      line 57: 87
+      line 59: 88
+      line 60: 92
+      line 61: 99
+      line 65: 108
+      line 68: 109
+      line 69: 113
+      line 70: 123
+      line 71: 135
+      line 73: 144
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0     145     0 event   Lnet/minecraftforge/event/TickEvent$ClientTickEvent;
+         15     130     1 minecraft   Lnet/minecraft/client/Minecraft;
+         56      89     2 connection   Lnet/minecraft/network/Connection;
+         69      76     3  data   Lnet/minecraftforge/network/ConnectionData;
+        123      22     4 problem   Ljava/lang/String;
+
+  public static void onLoggingIn(net.minecraftforge.client.event.ClientPlayerNetworkEvent$LoggingIn);
+    Code:
+       0: invokestatic  #73                 // Method reset:()V
+       3: return
+    LineNumberTable:
+      line 77: 0
+      line 78: 3
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       4     0 event   Lnet/minecraftforge/client/event/ClientPlayerNetworkEvent$LoggingIn;
+
+  public static void onLoggingOut(net.minecraftforge.client.event.ClientPlayerNetworkEvent$LoggingOut);
+    Code:
+       0: invokestatic  #73                 // Method reset:()V
+       3: return
+    LineNumberTable:
+      line 82: 0
+      line 83: 3
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       4     0 event   Lnet/minecraftforge/client/event/ClientPlayerNetworkEvent$LoggingOut;
+
+  private static void reset();
+    Code:
+       0: iconst_0
+       1: putstatic     #102                // Field waitedTicks:I
+       4: iconst_0
+       5: putstatic     #83                 // Field checked:Z
+       8: return
+    LineNumberTable:
+      line 86: 0
+      line 87: 4
+      line 88: 8
+}

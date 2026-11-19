@@ -1,0 +1,49 @@
+Compiled from "LiechtenauerSkillMixin.java"
+public abstract class com.pla.efclash_blade.mixin.LiechtenauerSkillMixin {
+  public com.pla.efclash_blade.mixin.LiechtenauerSkillMixin();
+    Code:
+       0: aload_0
+       1: invokespecial #14                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 27: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/mixin/LiechtenauerSkillMixin;
+
+  private void efclashBlade$replaceLiechtenauerParticles(yesman.epicfight.particle.HitParticleType, net.minecraft.server.level.ServerLevel, java.util.function.BiFunction, java.util.function.BiFunction, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: aload_1
+       1: aload_2
+       2: aload_3
+       3: aload         4
+       5: aload         5
+       7: aload         6
+       9: invokevirtual #33                 // Method yesman/epicfight/particle/HitParticleType.spawnParticleWithArgument:(Lnet/minecraft/server/level/ServerLevel;Ljava/util/function/BiFunction;Ljava/util/function/BiFunction;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+      12: invokestatic  #39                 // Method com/pla/efclash_blade/config/EFClashBladeConfig.useEpicFightParticles:()Z
+      15: ifne          33
+      18: invokestatic  #42                 // Method com/pla/efclash_blade/config/EFClashBladeConfig.guardParticlesEnabled:()Z
+      21: ifeq          33
+      24: aload_2
+      25: aload         5
+      27: invokestatic  #46                 // Method com/pla/efclash_blade/config/EFClashBladeConfig.guardSparkCount:()I
+      30: invokestatic  #52                 // Method com/pla/efclash_blade/particle/ClashParticleEmitter.spawnSparks:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;I)V
+      33: return
+    LineNumberTable:
+      line 40: 0
+      line 41: 12
+      line 42: 18
+      line 43: 24
+      line 44: 27
+      line 43: 30
+      line 46: 33
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      34     0  this   Lcom/pla/efclash_blade/mixin/LiechtenauerSkillMixin;
+          0      34     1 particle   Lyesman/epicfight/particle/HitParticleType;
+          0      34     2 level   Lnet/minecraft/server/level/ServerLevel;
+          0      34     3 positionProvider   Ljava/util/function/BiFunction;
+          0      34     4 argumentProvider   Ljava/util/function/BiFunction;
+          0      34     5 defender   Lnet/minecraft/world/entity/Entity;
+          0      34     6 attacker   Lnet/minecraft/world/entity/Entity;
+}

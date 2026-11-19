@@ -1,0 +1,436 @@
+Compiled from "ClashBladeSkill.java"
+public class com.pla.efclash_blade.skill.ClashBladeSkill extends yesman.epicfight.skill.passive.PassiveSkill {
+  private static final java.util.UUID EVENT_UUID;
+
+  public com.pla.efclash_blade.skill.ClashBladeSkill(yesman.epicfight.skill.SkillBuilder<? extends yesman.epicfight.skill.passive.PassiveSkill>);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #42                 // Method yesman/epicfight/skill/passive/PassiveSkill."<init>":(Lyesman/epicfight/skill/SkillBuilder;)V
+       5: return
+    LineNumberTable:
+      line 38: 0
+      line 39: 5
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       6     0  this   Lcom/pla/efclash_blade/skill/ClashBladeSkill;
+          0       6     1 skillBuilder   Lyesman/epicfight/skill/SkillBuilder;
+
+  private static boolean blacklistClashBladeAnimation(yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: iconst_1
+       1: ireturn
+    LineNumberTable:
+      line 43: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0 dynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       2     1 entityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       2     2 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+
+  private static int getWeaponDestroyValueOnClash(yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, net.minecraft.world.damagesource.DamageSource, yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch<?>, net.minecraft.server.level.ServerLevel);
+    Code:
+       0: getstatic     #66                 // Field com/pla/efclash_blade/config/EFClashBladeConfig.BREAK_WEAPON_VALUE_ON_CLASH:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+       3: invokevirtual #70                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+       6: checkcast     #72                 // class java/lang/Integer
+       9: invokevirtual #76                 // Method java/lang/Integer.intValue:()I
+      12: ireturn
+    LineNumberTable:
+      line 47: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      13     0 dynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0      13     1 damageSource   Lnet/minecraft/world/damagesource/DamageSource;
+          0      13     2 playerPatch   Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+          0      13     3 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+
+  private static void moreLogicAfterClashing(yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, net.minecraft.world.damagesource.DamageSource, yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch<?>, net.minecraft.server.level.ServerLevel);
+    Code:
+       0: return
+    LineNumberTable:
+      line 51: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       1     0 dynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       1     1 damageSource   Lnet/minecraft/world/damagesource/DamageSource;
+          0       1     2 playerPatch   Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+          0       1     3 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+
+  public void onInitiate(yesman.epicfight.skill.SkillContainer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #90                 // Method yesman/epicfight/skill/passive/PassiveSkill.onInitiate:(Lyesman/epicfight/skill/SkillContainer;)V
+       5: aload_1
+       6: invokevirtual #96                 // Method yesman/epicfight/skill/SkillContainer.getDataManager:()Lyesman/epicfight/skill/SkillDataManager;
+       9: pop
+      10: aload_1
+      11: invokevirtual #100                // Method yesman/epicfight/skill/SkillContainer.getExecutor:()Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+      14: invokevirtual #106                // Method yesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch.getEventListener:()Lyesman/epicfight/world/entity/eventlistener/PlayerEventListener;
+      17: getstatic     #110                // Field yesman/epicfight/world/entity/eventlistener/PlayerEventListener$EventType.TAKE_DAMAGE_EVENT_ATTACK:Lyesman/epicfight/world/entity/eventlistener/PlayerEventListener$EventType;
+      20: getstatic     #112                // Field EVENT_UUID:Ljava/util/UUID;
+      23: invokedynamic #131,  0            // InvokeDynamic #0:accept:()Ljava/util/function/Consumer;
+      28: invokevirtual #135                // Method yesman/epicfight/world/entity/eventlistener/PlayerEventListener.addEventListener:(Lyesman/epicfight/world/entity/eventlistener/PlayerEventListener$EventType;Ljava/util/UUID;Ljava/util/function/Consumer;)V
+      31: return
+    LineNumberTable:
+      line 56: 0
+      line 57: 5
+      line 58: 10
+      line 115: 31
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      32     0  this   Lcom/pla/efclash_blade/skill/ClashBladeSkill;
+          0      32     1 skillcontainer   Lyesman/epicfight/skill/SkillContainer;
+
+  public void onRemoved(yesman.epicfight.skill.SkillContainer);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: invokespecial #140                // Method yesman/epicfight/skill/passive/PassiveSkill.onRemoved:(Lyesman/epicfight/skill/SkillContainer;)V
+       5: aload_1
+       6: invokevirtual #100                // Method yesman/epicfight/skill/SkillContainer.getExecutor:()Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+       9: invokevirtual #106                // Method yesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch.getEventListener:()Lyesman/epicfight/world/entity/eventlistener/PlayerEventListener;
+      12: getstatic     #110                // Field yesman/epicfight/world/entity/eventlistener/PlayerEventListener$EventType.TAKE_DAMAGE_EVENT_ATTACK:Lyesman/epicfight/world/entity/eventlistener/PlayerEventListener$EventType;
+      15: getstatic     #112                // Field EVENT_UUID:Ljava/util/UUID;
+      18: invokevirtual #144                // Method yesman/epicfight/world/entity/eventlistener/PlayerEventListener.removeListener:(Lyesman/epicfight/world/entity/eventlistener/PlayerEventListener$EventType;Ljava/util/UUID;)V
+      21: return
+    LineNumberTable:
+      line 119: 0
+      line 120: 5
+      line 121: 21
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      22     0  this   Lcom/pla/efclash_blade/skill/ClashBladeSkill;
+          0      22     1 skillcontainer   Lyesman/epicfight/skill/SkillContainer;
+
+  private static void lambda$onInitiate$2(yesman.epicfight.world.entity.eventlistener.TakeDamageEvent$Attack);
+    Code:
+       0: aload_0
+       1: invokevirtual #147                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.getPlayerPatch:()Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+       4: astore_1
+       5: aload_0
+       6: invokevirtual #147                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.getPlayerPatch:()Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+       9: checkcast     #149                // class yesman/epicfight/world/capabilities/entitypatch/player/ServerPlayerPatch
+      12: invokevirtual #153                // Method yesman/epicfight/world/capabilities/entitypatch/player/ServerPlayerPatch.getOriginal:()Lnet/minecraft/world/entity/Entity;
+      15: checkcast     #155                // class net/minecraft/server/level/ServerPlayer
+      18: astore_2
+      19: aload_0
+      20: invokevirtual #159                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.getDamageSource:()Lnet/minecraft/world/damagesource/DamageSource;
+      23: astore_3
+      24: aload_1
+      25: invokevirtual #163                // Method yesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch.getAnimator:()Lyesman/epicfight/api/animation/Animator;
+      28: aconst_null
+      29: invokevirtual #169                // Method yesman/epicfight/api/animation/Animator.getPlayerFor:(Lyesman/epicfight/api/asset/AssetAccessor;)Lyesman/epicfight/api/animation/AnimationPlayer;
+      32: invokestatic  #175                // Method java/util/Objects.requireNonNull:(Ljava/lang/Object;)Ljava/lang/Object;
+      35: checkcast     #177                // class yesman/epicfight/api/animation/AnimationPlayer
+      38: astore        4
+      40: aload         4
+      42: invokevirtual #181                // Method yesman/epicfight/api/animation/AnimationPlayer.getRealAnimation:()Lyesman/epicfight/api/asset/AssetAccessor;
+      45: astore        5
+      47: aload         4
+      49: invokevirtual #185                // Method yesman/epicfight/api/animation/AnimationPlayer.getElapsedTime:()F
+      52: fstore        6
+      54: aload         5
+      56: invokeinterface #188,  1          // InterfaceMethod yesman/epicfight/api/asset/AssetAccessor.get:()Ljava/lang/Object;
+      61: checkcast     #190                // class yesman/epicfight/api/animation/types/StaticAnimation
+      64: aload_1
+      65: fload         6
+      67: invokevirtual #194                // Method yesman/epicfight/api/animation/types/StaticAnimation.getState:(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;F)Lyesman/epicfight/api/animation/types/EntityState;
+      70: astore        7
+      72: aload_1
+      73: getstatic     #200                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+      76: invokevirtual #204                // Method yesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch.getHoldingItemCapability:(Lnet/minecraft/world/InteractionHand;)Lyesman/epicfight/world/capabilities/item/CapabilityItem;
+      79: invokevirtual #208                // Method yesman/epicfight/world/capabilities/item/CapabilityItem.getWeaponCategory:()Lyesman/epicfight/world/capabilities/item/WeaponCategory;
+      82: getstatic     #212                // Field yesman/epicfight/world/capabilities/item/CapabilityItem$WeaponCategories.FIST:Lyesman/epicfight/world/capabilities/item/CapabilityItem$WeaponCategories;
+      85: if_acmpeq     547
+      88: aload_3
+      89: getstatic     #218                // Field net/minecraft/world/damagesource/DamageTypes.f_268515_:Lnet/minecraft/resources/ResourceKey;
+      92: invokevirtual #224                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+      95: ifne          547
+      98: aload_3
+      99: getstatic     #230                // Field net/minecraft/tags/DamageTypeTags.f_268415_:Lnet/minecraft/tags/TagKey;
+     102: invokevirtual #234                // Method net/minecraft/world/damagesource/DamageSource.m_269533_:(Lnet/minecraft/tags/TagKey;)Z
+     105: ifne          547
+     108: aload_3
+     109: getstatic     #237                // Field net/minecraft/world/damagesource/DamageTypes.f_268468_:Lnet/minecraft/resources/ResourceKey;
+     112: invokevirtual #224                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     115: ifne          547
+     118: aload_3
+     119: getstatic     #240                // Field net/minecraft/world/damagesource/DamageTypes.f_268631_:Lnet/minecraft/resources/ResourceKey;
+     122: invokevirtual #224                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     125: ifne          547
+     128: aload_3
+     129: getstatic     #243                // Field net/minecraft/world/damagesource/DamageTypes.f_268671_:Lnet/minecraft/resources/ResourceKey;
+     132: invokevirtual #224                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     135: ifne          547
+     138: aload         5
+     140: invokeinterface #188,  1          // InterfaceMethod yesman/epicfight/api/asset/AssetAccessor.get:()Ljava/lang/Object;
+     145: instanceof    #245                // class yesman/epicfight/api/animation/types/AttackAnimation
+     148: ifeq          547
+     151: aload         7
+     153: invokevirtual #250                // Method yesman/epicfight/api/animation/types/EntityState.getLevel:()I
+     156: iconst_3
+     157: if_icmpge     547
+     160: aload         5
+     162: aload         7
+     164: aload_2
+     165: invokestatic  #252                // Method blacklistClashBladeAnimation:(Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/server/level/ServerPlayer;)Z
+     168: ifeq          547
+     171: aload_3
+     172: invokevirtual #255                // Method net/minecraft/world/damagesource/DamageSource.m_7639_:()Lnet/minecraft/world/entity/Entity;
+     175: astore        8
+     177: aload         8
+     179: ifnull        547
+     182: aload         8
+     184: invokevirtual #261                // Method net/minecraft/world/entity/Entity.m_20182_:()Lnet/minecraft/world/phys/Vec3;
+     187: astore        9
+     189: aload_0
+     190: invokevirtual #147                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.getPlayerPatch:()Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+     193: checkcast     #149                // class yesman/epicfight/world/capabilities/entitypatch/player/ServerPlayerPatch
+     196: invokevirtual #153                // Method yesman/epicfight/world/capabilities/entitypatch/player/ServerPlayerPatch.getOriginal:()Lnet/minecraft/world/entity/Entity;
+     199: checkcast     #155                // class net/minecraft/server/level/ServerPlayer
+     202: fconst_1
+     203: invokevirtual #265                // Method net/minecraft/server/level/ServerPlayer.m_20252_:(F)Lnet/minecraft/world/phys/Vec3;
+     206: astore        10
+     208: aload         9
+     210: aload_0
+     211: invokevirtual #147                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.getPlayerPatch:()Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+     214: checkcast     #149                // class yesman/epicfight/world/capabilities/entitypatch/player/ServerPlayerPatch
+     217: invokevirtual #153                // Method yesman/epicfight/world/capabilities/entitypatch/player/ServerPlayerPatch.getOriginal:()Lnet/minecraft/world/entity/Entity;
+     220: checkcast     #155                // class net/minecraft/server/level/ServerPlayer
+     223: invokevirtual #268                // Method net/minecraft/server/level/ServerPlayer.m_146892_:()Lnet/minecraft/world/phys/Vec3;
+     226: invokevirtual #274                // Method net/minecraft/world/phys/Vec3.m_82546_:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     229: invokevirtual #277                // Method net/minecraft/world/phys/Vec3.m_82541_:()Lnet/minecraft/world/phys/Vec3;
+     232: astore        11
+     234: aload         11
+     236: aload         10
+     238: invokevirtual #281                // Method net/minecraft/world/phys/Vec3.m_82526_:(Lnet/minecraft/world/phys/Vec3;)D
+     241: dconst_0
+     242: dcmpl
+     243: ifle          547
+     246: new           #283                // class java/util/Random
+     249: dup
+     250: invokespecial #286                // Method java/util/Random."<init>":()V
+     253: invokevirtual #289                // Method java/util/Random.nextFloat:()F
+     256: f2d
+     257: getstatic     #292                // Field com/pla/efclash_blade/config/EFClashBladeConfig.CLASH_CHANCE:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     260: invokevirtual #70                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     263: checkcast     #294                // class java/lang/Double
+     266: invokevirtual #298                // Method java/lang/Double.doubleValue:()D
+     269: dcmpl
+     270: ifle          274
+     273: return
+     274: aload_0
+     275: iconst_1
+     276: invokevirtual #302                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.setCanceled:(Z)V
+     279: aload_0
+     280: getstatic     #306                // Field yesman/epicfight/api/utils/AttackResult$ResultType.BLOCKED:Lyesman/epicfight/api/utils/AttackResult$ResultType;
+     283: invokevirtual #310                // Method yesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack.setResult:(Lyesman/epicfight/api/utils/AttackResult$ResultType;)V
+     286: aload_1
+     287: getstatic     #316                // Field yesman/epicfight/gameasset/EpicFightSounds.CLASH:Lnet/minecraftforge/registries/RegistryObject;
+     290: invokevirtual #319                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+     293: checkcast     #321                // class net/minecraft/sounds/SoundEvent
+     296: ldc_w         #322                // float -0.05f
+     299: ldc_w         #323                // float 0.1f
+     302: invokevirtual #327                // Method yesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch.playSound:(Lnet/minecraft/sounds/SoundEvent;FF)V
+     305: aload         8
+     307: new           #270                // class net/minecraft/world/phys/Vec3
+     310: dup
+     311: aload         8
+     313: invokevirtual #330                // Method net/minecraft/world/entity/Entity.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     316: getfield      #334                // Field net/minecraft/world/phys/Vec3.f_82479_:D
+     319: ldc2_w        #335                // double -0.2d
+     322: dmul
+     323: dconst_0
+     324: aload         8
+     326: invokevirtual #330                // Method net/minecraft/world/entity/Entity.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     329: getfield      #339                // Field net/minecraft/world/phys/Vec3.f_82481_:D
+     332: ldc2_w        #335                // double -0.2d
+     335: dmul
+     336: invokespecial #342                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     339: invokevirtual #346                // Method net/minecraft/world/entity/Entity.m_20256_:(Lnet/minecraft/world/phys/Vec3;)V
+     342: aload_2
+     343: new           #270                // class net/minecraft/world/phys/Vec3
+     346: dup
+     347: aload_2
+     348: invokevirtual #347                // Method net/minecraft/server/level/ServerPlayer.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     351: getfield      #334                // Field net/minecraft/world/phys/Vec3.f_82479_:D
+     354: ldc2_w        #335                // double -0.2d
+     357: dmul
+     358: dconst_0
+     359: aload_2
+     360: invokevirtual #347                // Method net/minecraft/server/level/ServerPlayer.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     363: getfield      #339                // Field net/minecraft/world/phys/Vec3.f_82481_:D
+     366: ldc2_w        #335                // double -0.2d
+     369: dmul
+     370: invokespecial #342                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     373: invokevirtual #348                // Method net/minecraft/server/level/ServerPlayer.m_20256_:(Lnet/minecraft/world/phys/Vec3;)V
+     376: aload_2
+     377: invokevirtual #352                // Method net/minecraft/server/level/ServerPlayer.m_9236_:()Lnet/minecraft/world/level/Level;
+     380: astore        13
+     382: aload         13
+     384: instanceof    #354                // class net/minecraft/server/level/ServerLevel
+     387: ifeq          547
+     390: aload         13
+     392: checkcast     #354                // class net/minecraft/server/level/ServerLevel
+     395: astore        12
+     397: aload         12
+     399: aload_2
+     400: aload_3
+     401: invokevirtual #255                // Method net/minecraft/world/damagesource/DamageSource.m_7639_:()Lnet/minecraft/world/entity/Entity;
+     404: invokestatic  #360                // Method com/pla/efclash_blade/particle/ClashParticleEmitter.spawn:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+     407: iconst_0
+     408: istore        13
+     410: aload_2
+     411: invokevirtual #364                // Method net/minecraft/server/level/ServerPlayer.m_21206_:()Lnet/minecraft/world/item/ItemStack;
+     414: invokevirtual #370                // Method net/minecraft/world/item/ItemStack.m_41720_:()Lnet/minecraft/world/item/Item;
+     417: instanceof    #372                // class net/minecraft/world/item/SwordItem
+     420: ifne          436
+     423: aload_2
+     424: invokevirtual #364                // Method net/minecraft/server/level/ServerPlayer.m_21206_:()Lnet/minecraft/world/item/ItemStack;
+     427: invokevirtual #370                // Method net/minecraft/world/item/ItemStack.m_41720_:()Lnet/minecraft/world/item/Item;
+     430: instanceof    #374                // class net/minecraft/world/item/AxeItem
+     433: ifeq          474
+     436: new           #283                // class java/util/Random
+     439: dup
+     440: invokespecial #286                // Method java/util/Random."<init>":()V
+     443: invokevirtual #378                // Method java/util/Random.nextBoolean:()Z
+     446: ifeq          474
+     449: iconst_1
+     450: istore        13
+     452: aload_2
+     453: invokevirtual #364                // Method net/minecraft/server/level/ServerPlayer.m_21206_:()Lnet/minecraft/world/item/ItemStack;
+     456: aload         5
+     458: aload_3
+     459: aload_1
+     460: aload         12
+     462: invokestatic  #380                // Method getWeaponDestroyValueOnClash:(Lyesman/epicfight/api/asset/AssetAccessor;Lnet/minecraft/world/damagesource/DamageSource;Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;Lnet/minecraft/server/level/ServerLevel;)I
+     465: aload_2
+     466: invokedynamic #387,  0            // InvokeDynamic #1:accept:()Ljava/util/function/Consumer;
+     471: invokevirtual #391                // Method net/minecraft/world/item/ItemStack.m_41622_:(ILnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V
+     474: iload         13
+     476: ifne          501
+     479: aload_2
+     480: invokevirtual #394                // Method net/minecraft/server/level/ServerPlayer.m_21205_:()Lnet/minecraft/world/item/ItemStack;
+     483: aload         5
+     485: aload_3
+     486: aload_1
+     487: aload         12
+     489: invokestatic  #380                // Method getWeaponDestroyValueOnClash:(Lyesman/epicfight/api/asset/AssetAccessor;Lnet/minecraft/world/damagesource/DamageSource;Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;Lnet/minecraft/server/level/ServerLevel;)I
+     492: aload_2
+     493: invokedynamic #399,  0            // InvokeDynamic #2:accept:()Ljava/util/function/Consumer;
+     498: invokevirtual #391                // Method net/minecraft/world/item/ItemStack.m_41622_:(ILnet/minecraft/world/entity/LivingEntity;Ljava/util/function/Consumer;)V
+     501: getstatic     #402                // Field com/pla/efclash_blade/config/EFClashBladeConfig.SHAKE_SCREEN:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     504: invokevirtual #70                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     507: checkcast     #404                // class java/lang/Boolean
+     510: invokevirtual #407                // Method java/lang/Boolean.booleanValue:()Z
+     513: ifeq          538
+     516: aload         12
+     518: aload_1
+     519: invokevirtual #408                // Method yesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch.getOriginal:()Lnet/minecraft/world/entity/Entity;
+     522: checkcast     #410                // class net/minecraft/world/entity/player/Player
+     525: invokevirtual #414                // Method net/minecraft/world/entity/player/Player.m_20097_:()Lnet/minecraft/core/BlockPos;
+     528: invokevirtual #419                // Method net/minecraft/core/BlockPos.m_252807_:()Lnet/minecraft/world/phys/Vec3;
+     531: dconst_1
+     532: bipush        20
+     534: iconst_4
+     535: invokestatic  #425                // Method com/pla/efclash_blade/util/ScreenShakeUtil.applyScreenShake:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;DII)V
+     538: aload         5
+     540: aload_3
+     541: aload_1
+     542: aload         12
+     544: invokestatic  #427                // Method moreLogicAfterClashing:(Lyesman/epicfight/api/asset/AssetAccessor;Lnet/minecraft/world/damagesource/DamageSource;Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;Lnet/minecraft/server/level/ServerLevel;)V
+     547: return
+    LineNumberTable:
+      line 59: 0
+      line 60: 5
+      line 61: 19
+      line 63: 24
+      line 64: 25
+      line 65: 40
+      line 67: 47
+      line 68: 54
+      line 70: 72
+      line 71: 92
+      line 72: 112
+      line 73: 132
+      line 74: 153
+      line 75: 171
+      line 77: 177
+      line 78: 182
+      line 79: 189
+      line 80: 208
+      line 82: 234
+      line 83: 246
+      line 84: 274
+      line 85: 279
+      line 86: 286
+      line 87: 305
+      line 89: 342
+      line 90: 376
+      line 91: 397
+      line 92: 407
+      line 93: 410
+      line 94: 424
+      line 95: 443
+      line 96: 449
+      line 97: 452
+      line 101: 474
+      line 102: 479
+      line 106: 501
+      line 107: 516
+      line 109: 538
+      line 114: 547
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+        382      15    13 patt5103$temp   Lnet/minecraft/world/level/Level;
+        410     137    13 damaged   Z
+        397     150    12 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+        189     358     9 entityPosition   Lnet/minecraft/world/phys/Vec3;
+        208     339    10 entityViewVector   Lnet/minecraft/world/phys/Vec3;
+        234     313    11 entitySubtract   Lnet/minecraft/world/phys/Vec3;
+        177     370     8 entity   Lnet/minecraft/world/entity/Entity;
+          0     548     0   pre   Lyesman/epicfight/world/entity/eventlistener/TakeDamageEvent$Attack;
+          5     543     1 playerPatch   Lyesman/epicfight/world/capabilities/entitypatch/player/PlayerPatch;
+         19     529     2 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+         24     524     3 damageSource   Lnet/minecraft/world/damagesource/DamageSource;
+         40     508     4 animationPlayer   Lyesman/epicfight/api/animation/AnimationPlayer;
+         47     501     5 dynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+         54     494     6 elapsedTimeFloat   F
+         72     476     7 entityState   Lyesman/epicfight/api/animation/types/EntityState;
+
+  private static void lambda$onInitiate$1(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: getstatic     #200                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+       4: invokevirtual #447                // Method net/minecraft/server/level/ServerPlayer.m_21190_:(Lnet/minecraft/world/InteractionHand;)V
+       7: return
+    LineNumberTable:
+      line 103: 0
+      line 104: 7
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       8     0 player   Lnet/minecraft/server/level/ServerPlayer;
+
+  private static void lambda$onInitiate$0(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: getstatic     #451                // Field net/minecraft/world/InteractionHand.OFF_HAND:Lnet/minecraft/world/InteractionHand;
+       4: invokevirtual #447                // Method net/minecraft/server/level/ServerPlayer.m_21190_:(Lnet/minecraft/world/InteractionHand;)V
+       7: return
+    LineNumberTable:
+      line 98: 0
+      line 99: 7
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       8     0 player   Lnet/minecraft/server/level/ServerPlayer;
+
+  static {};
+    Code:
+       0: ldc_w         #454                // String a6f630fd-45e1-4d3d-9542-2c91a8cf9833
+       3: invokestatic  #460                // Method java/util/UUID.fromString:(Ljava/lang/String;)Ljava/util/UUID;
+       6: putstatic     #112                // Field EVENT_UUID:Ljava/util/UUID;
+       9: return
+    LineNumberTable:
+      line 35: 0
+}

@@ -1,0 +1,22 @@
+Compiled from "EFClashBlade.java"
+public class com.pla.efclash_blade.EFClashBlade$ClientModEvents {
+  public com.pla.efclash_blade.EFClashBlade$ClientModEvents();
+    Code:
+       0: aload_0
+       1: invokespecial #29                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 81: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/EFClashBlade$ClientModEvents;
+
+  public static void onClientSetup(net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: return
+    LineNumberTable:
+      line 84: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       1     0 event   Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;
+}

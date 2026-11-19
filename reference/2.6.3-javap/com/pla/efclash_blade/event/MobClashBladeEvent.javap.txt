@@ -1,0 +1,554 @@
+Compiled from "MobClashBladeEvent.java"
+public class com.pla.efclash_blade.event.MobClashBladeEvent {
+  public com.pla.efclash_blade.event.MobClashBladeEvent();
+    Code:
+       0: aload_0
+       1: invokespecial #25                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 35: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/event/MobClashBladeEvent;
+
+  public static boolean isBlacklisted(net.minecraft.world.entity.Entity);
+    Code:
+       0: getstatic     #35                 // Field net/minecraftforge/registries/ForgeRegistries.ENTITY_TYPES:Lnet/minecraftforge/registries/IForgeRegistry;
+       3: aload_0
+       4: invokevirtual #41                 // Method net/minecraft/world/entity/Entity.m_6095_:()Lnet/minecraft/world/entity/EntityType;
+       7: invokeinterface #47,  2           // InterfaceMethod net/minecraftforge/registries/IForgeRegistry.getKey:(Ljava/lang/Object;)Lnet/minecraft/resources/ResourceLocation;
+      12: astore_1
+      13: aload_1
+      14: ifnonnull     19
+      17: iconst_0
+      18: ireturn
+      19: aload_1
+      20: invokevirtual #53                 // Method net/minecraft/resources/ResourceLocation.toString:()Ljava/lang/String;
+      23: astore_2
+      24: aload_1
+      25: invokevirtual #56                 // Method net/minecraft/resources/ResourceLocation.m_135827_:()Ljava/lang/String;
+      28: astore_3
+      29: getstatic     #62                 // Field com/pla/efclash_blade/config/EFClashBladeConfig.BLACK_LIST:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+      32: invokevirtual #66                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      35: checkcast     #68                 // class java/util/List
+      38: astore        4
+      40: aload         4
+      42: ifnull        55
+      45: aload         4
+      47: invokeinterface #72,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      52: ifeq          57
+      55: iconst_0
+      56: ireturn
+      57: aload         4
+      59: invokeinterface #78,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      64: astore        5
+      66: aload         5
+      68: invokeinterface #83,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      73: ifeq          156
+      76: aload         5
+      78: invokeinterface #86,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      83: checkcast     #74                 // class java/lang/String
+      86: astore        6
+      88: aload         6
+      90: ifnonnull     96
+      93: goto          66
+      96: aload         6
+      98: invokevirtual #89                 // Method java/lang/String.trim:()Ljava/lang/String;
+     101: getstatic     #95                 // Field java/util/Locale.ROOT:Ljava/util/Locale;
+     104: invokevirtual #99                 // Method java/lang/String.toLowerCase:(Ljava/util/Locale;)Ljava/lang/String;
+     107: astore        7
+     109: aload         7
+     111: invokevirtual #100                // Method java/lang/String.isEmpty:()Z
+     114: ifeq          120
+     117: goto          66
+     120: aload         7
+     122: bipush        58
+     124: invokevirtual #104                // Method java/lang/String.indexOf:(I)I
+     127: iconst_m1
+     128: if_icmpne     142
+     131: aload         7
+     133: aload_3
+     134: invokevirtual #108                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     137: ifeq          153
+     140: iconst_1
+     141: ireturn
+     142: aload         7
+     144: aload_2
+     145: invokevirtual #108                // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+     148: ifeq          153
+     151: iconst_1
+     152: ireturn
+     153: goto          66
+     156: iconst_0
+     157: ireturn
+    LineNumberTable:
+      line 37: 0
+      line 38: 13
+      line 39: 19
+      line 40: 24
+      line 42: 29
+      line 43: 40
+      line 45: 57
+      line 46: 88
+      line 47: 96
+      line 48: 109
+      line 50: 120
+      line 51: 131
+      line 53: 142
+      line 55: 153
+      line 56: 156
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+        109      44     7 stringItem   Ljava/lang/String;
+         88      65     6  item   Ljava/lang/String;
+          0     158     0 entity   Lnet/minecraft/world/entity/Entity;
+         13     145     1 resourceLocation   Lnet/minecraft/resources/ResourceLocation;
+         24     134     2 fullId   Ljava/lang/String;
+         29     129     3 modId   Ljava/lang/String;
+         40     118     4  list   Ljava/util/List;
+
+  private static void clashBlade(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity, net.minecraft.server.level.ServerLevel, int);
+    Code:
+       0: new           #125                // class java/util/Random
+       3: dup
+       4: invokespecial #126                // Method java/util/Random."<init>":()V
+       7: invokevirtual #130                // Method java/util/Random.nextFloat:()F
+      10: f2d
+      11: getstatic     #133                // Field com/pla/efclash_blade/config/EFClashBladeConfig.CLASH_CHANCE:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+      14: invokevirtual #66                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+      17: checkcast     #135                // class java/lang/Double
+      20: invokevirtual #139                // Method java/lang/Double.doubleValue:()D
+      23: dcmpl
+      24: ifle          28
+      27: return
+      28: aload_0
+      29: aload_1
+      30: aload_2
+      31: aload_3
+      32: aload         4
+      34: aload         5
+      36: iload         7
+      38: invokestatic  #143                // Method customPreAdditionClashBlade:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;I)V
+      41: aload_0
+      42: iconst_1
+      43: invokevirtual #149                // Method net/minecraftforge/event/entity/living/LivingAttackEvent.setCanceled:(Z)V
+      46: aload_0
+      47: aload_1
+      48: aload_2
+      49: aload_3
+      50: aload         4
+      52: aload         5
+      54: invokestatic  #153                // Method conditionToPlayClashSound:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)Z
+      57: ifeq          77
+      60: aload_1
+      61: getstatic     #159                // Field yesman/epicfight/gameasset/EpicFightSounds.CLASH:Lnet/minecraftforge/registries/RegistryObject;
+      64: invokevirtual #162                // Method net/minecraftforge/registries/RegistryObject.get:()Ljava/lang/Object;
+      67: checkcast     #164                // class net/minecraft/sounds/SoundEvent
+      70: ldc           #165                // float -0.05f
+      72: ldc           #166                // float 0.1f
+      74: invokevirtual #172                // Method yesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch.playSound:(Lnet/minecraft/sounds/SoundEvent;FF)V
+      77: aload         4
+      79: new           #174                // class net/minecraft/world/phys/Vec3
+      82: dup
+      83: aload         4
+      85: invokevirtual #178                // Method net/minecraft/world/entity/Entity.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+      88: getfield      #182                // Field net/minecraft/world/phys/Vec3.f_82479_:D
+      91: ldc2_w        #183                // double -0.2d
+      94: dmul
+      95: dconst_0
+      96: aload         4
+      98: invokevirtual #178                // Method net/minecraft/world/entity/Entity.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     101: getfield      #187                // Field net/minecraft/world/phys/Vec3.f_82481_:D
+     104: ldc2_w        #183                // double -0.2d
+     107: dmul
+     108: invokespecial #190                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     111: invokevirtual #194                // Method net/minecraft/world/entity/Entity.m_20256_:(Lnet/minecraft/world/phys/Vec3;)V
+     114: aload         5
+     116: new           #174                // class net/minecraft/world/phys/Vec3
+     119: dup
+     120: aload         5
+     122: invokevirtual #178                // Method net/minecraft/world/entity/Entity.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     125: getfield      #182                // Field net/minecraft/world/phys/Vec3.f_82479_:D
+     128: ldc2_w        #183                // double -0.2d
+     131: dmul
+     132: dconst_0
+     133: aload         5
+     135: invokevirtual #178                // Method net/minecraft/world/entity/Entity.m_20154_:()Lnet/minecraft/world/phys/Vec3;
+     138: getfield      #187                // Field net/minecraft/world/phys/Vec3.f_82481_:D
+     141: ldc2_w        #183                // double -0.2d
+     144: dmul
+     145: invokespecial #190                // Method net/minecraft/world/phys/Vec3."<init>":(DDD)V
+     148: invokevirtual #194                // Method net/minecraft/world/entity/Entity.m_20256_:(Lnet/minecraft/world/phys/Vec3;)V
+     151: aload         6
+     153: aload         5
+     155: aload         4
+     157: invokestatic  #200                // Method com/pla/efclash_blade/particle/ClashParticleEmitter.spawn:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)V
+     160: getstatic     #203                // Field com/pla/efclash_blade/config/EFClashBladeConfig.SHAKE_SCREEN:Lnet/minecraftforge/common/ForgeConfigSpec$ConfigValue;
+     163: invokevirtual #66                 // Method net/minecraftforge/common/ForgeConfigSpec$ConfigValue.get:()Ljava/lang/Object;
+     166: checkcast     #205                // class java/lang/Boolean
+     169: invokevirtual #208                // Method java/lang/Boolean.booleanValue:()Z
+     172: ifeq          207
+     175: aload         4
+     177: instanceof    #210                // class net/minecraft/world/entity/player/Player
+     180: ifeq          207
+     183: aload         4
+     185: checkcast     #210                // class net/minecraft/world/entity/player/Player
+     188: astore        8
+     190: aload         6
+     192: aload         8
+     194: invokevirtual #214                // Method net/minecraft/world/entity/player/Player.m_20097_:()Lnet/minecraft/core/BlockPos;
+     197: invokevirtual #219                // Method net/minecraft/core/BlockPos.m_252807_:()Lnet/minecraft/world/phys/Vec3;
+     200: dconst_1
+     201: bipush        20
+     203: iconst_4
+     204: invokestatic  #225                // Method com/pla/efclash_blade/util/ScreenShakeUtil.applyScreenShake:(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/phys/Vec3;DII)V
+     207: aload_0
+     208: aload_1
+     209: aload_2
+     210: aload_3
+     211: aload         4
+     213: aload         5
+     215: iload         7
+     217: invokestatic  #228                // Method customPostAdditionClashBlade:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;I)V
+     220: return
+    LineNumberTable:
+      line 66: 0
+      line 67: 28
+      line 68: 41
+      line 69: 46
+      line 70: 60
+      line 73: 77
+      line 74: 85
+      line 76: 98
+      line 73: 111
+      line 79: 114
+      line 80: 122
+      line 82: 135
+      line 79: 148
+      line 85: 151
+      line 86: 160
+      line 87: 190
+      line 89: 207
+      line 90: 220
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+        190      17     8 player   Lnet/minecraft/world/entity/player/Player;
+          0     221     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0     221     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0     221     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0     221     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0     221     4 attackerEntity   Lnet/minecraft/world/entity/Entity;
+          0     221     5 defenderEntity   Lnet/minecraft/world/entity/Entity;
+          0     221     6 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+          0     221     7 clashBy   I
+
+  private static boolean customAdditionClashBladeLogic(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: iconst_0
+       1: ireturn
+    LineNumberTable:
+      line 96: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0       2     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0       2     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       2     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       2     4 attacker   Lnet/minecraft/world/entity/Entity;
+          0       2     5 defender   Lnet/minecraft/world/entity/Entity;
+
+  private static boolean forceClashBlade(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: iconst_0
+       1: ireturn
+    LineNumberTable:
+      line 103: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0       2     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0       2     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       2     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       2     4 attacker   Lnet/minecraft/world/entity/Entity;
+          0       2     5 defender   Lnet/minecraft/world/entity/Entity;
+
+  private static boolean blacklistClashBladeAnimation(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: iconst_1
+       1: ireturn
+    LineNumberTable:
+      line 110: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0       2     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0       2     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       2     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       2     4 attacker   Lnet/minecraft/world/entity/Entity;
+          0       2     5 defender   Lnet/minecraft/world/entity/Entity;
+
+  private static void customPreAdditionClashBlade(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity, int);
+    Code:
+       0: return
+    LineNumberTable:
+      line 117: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       1     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0       1     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0       1     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       1     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       1     4 attacker   Lnet/minecraft/world/entity/Entity;
+          0       1     5 defender   Lnet/minecraft/world/entity/Entity;
+          0       1     6 clashBy   I
+
+  private static void customPostAdditionClashBlade(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity, int);
+    Code:
+       0: return
+    LineNumberTable:
+      line 123: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       1     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0       1     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0       1     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       1     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       1     4 attacker   Lnet/minecraft/world/entity/Entity;
+          0       1     5 defender   Lnet/minecraft/world/entity/Entity;
+          0       1     6 clashBy   I
+
+  private static boolean conditionToPlayClashSound(net.minecraftforge.event.entity.living.LivingAttackEvent, yesman.epicfight.world.capabilities.entitypatch.LivingEntityPatch<?>, yesman.epicfight.api.asset.AssetAccessor<? extends yesman.epicfight.api.animation.types.StaticAnimation>, yesman.epicfight.api.animation.types.EntityState, net.minecraft.world.entity.Entity, net.minecraft.world.entity.Entity);
+    Code:
+       0: iconst_1
+       1: ireturn
+    LineNumberTable:
+      line 129: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          0       2     1 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+          0       2     2 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+          0       2     3 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+          0       2     4 attacker   Lnet/minecraft/world/entity/Entity;
+          0       2     5 defender   Lnet/minecraft/world/entity/Entity;
+
+  public static void onLivingAttack(net.minecraftforge.event.entity.living.LivingAttackEvent);
+    Code:
+       0: aload_0
+       1: invokevirtual #260                // Method net/minecraftforge/event/entity/living/LivingAttackEvent.getEntity:()Lnet/minecraft/world/entity/LivingEntity;
+       4: astore_1
+       5: aload_0
+       6: invokevirtual #264                // Method net/minecraftforge/event/entity/living/LivingAttackEvent.getSource:()Lnet/minecraft/world/damagesource/DamageSource;
+       9: astore_2
+      10: aload_2
+      11: invokevirtual #270                // Method net/minecraft/world/damagesource/DamageSource.m_7639_:()Lnet/minecraft/world/entity/Entity;
+      14: astore_3
+      15: aload_1
+      16: invokevirtual #274                // Method net/minecraft/world/entity/Entity.m_9236_:()Lnet/minecraft/world/level/Level;
+      19: astore        4
+      21: aload         4
+      23: instanceof    #276                // class net/minecraft/server/level/ServerLevel
+      26: ifeq          54
+      29: aload         4
+      31: checkcast     #276                // class net/minecraft/server/level/ServerLevel
+      34: astore        5
+      36: aload_1
+      37: instanceof    #210                // class net/minecraft/world/entity/player/Player
+      40: ifne          54
+      43: aload_3
+      44: ifnull        54
+      47: aload_1
+      48: invokestatic  #278                // Method isBlacklisted:(Lnet/minecraft/world/entity/Entity;)Z
+      51: ifeq          55
+      54: return
+      55: aload_1
+      56: ldc           #168                // class yesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch
+      58: invokestatic  #286                // Method yesman/epicfight/world/capabilities/EpicFightCapabilities.getEntityPatch:(Lnet/minecraft/world/entity/Entity;Ljava/lang/Class;)Lyesman/epicfight/world/capabilities/entitypatch/EntityPatch;
+      61: checkcast     #168                // class yesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch
+      64: astore        6
+      66: aload         6
+      68: ifnonnull     72
+      71: return
+      72: aload         6
+      74: invokevirtual #290                // Method yesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch.getAnimator:()Lyesman/epicfight/api/animation/Animator;
+      77: aconst_null
+      78: invokevirtual #296                // Method yesman/epicfight/api/animation/Animator.getPlayerFor:(Lyesman/epicfight/api/asset/AssetAccessor;)Lyesman/epicfight/api/animation/AnimationPlayer;
+      81: astore        7
+      83: aload         7
+      85: ifnonnull     89
+      88: return
+      89: aload         7
+      91: invokevirtual #302                // Method yesman/epicfight/api/animation/AnimationPlayer.getRealAnimation:()Lyesman/epicfight/api/asset/AssetAccessor;
+      94: astore        8
+      96: aload         7
+      98: invokevirtual #305                // Method yesman/epicfight/api/animation/AnimationPlayer.getElapsedTime:()F
+     101: fstore        9
+     103: aload         8
+     105: invokeinterface #308,  1          // InterfaceMethod yesman/epicfight/api/asset/AssetAccessor.get:()Ljava/lang/Object;
+     110: checkcast     #310                // class yesman/epicfight/api/animation/types/StaticAnimation
+     113: aload         6
+     115: fload         9
+     117: invokevirtual #314                // Method yesman/epicfight/api/animation/types/StaticAnimation.getState:(Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;F)Lyesman/epicfight/api/animation/types/EntityState;
+     120: astore        10
+     122: aload_0
+     123: aload         6
+     125: aload         8
+     127: aload         10
+     129: aload_3
+     130: aload_1
+     131: invokestatic  #316                // Method forceClashBlade:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)Z
+     134: ifeq          153
+     137: aload_0
+     138: aload         6
+     140: aload         8
+     142: aload         10
+     144: aload_3
+     145: aload_1
+     146: aload         5
+     148: iconst_2
+     149: invokestatic  #318                // Method clashBlade:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;I)V
+     152: return
+     153: aload_3
+     154: invokevirtual #323                // Method net/minecraft/world/entity/Entity.m_20182_:()Lnet/minecraft/world/phys/Vec3;
+     157: astore        11
+     159: aload_1
+     160: fconst_1
+     161: invokevirtual #327                // Method net/minecraft/world/entity/Entity.m_20252_:(F)Lnet/minecraft/world/phys/Vec3;
+     164: astore        12
+     166: aload         11
+     168: aload_1
+     169: invokevirtual #330                // Method net/minecraft/world/entity/Entity.m_146892_:()Lnet/minecraft/world/phys/Vec3;
+     172: invokevirtual #334                // Method net/minecraft/world/phys/Vec3.m_82546_:(Lnet/minecraft/world/phys/Vec3;)Lnet/minecraft/world/phys/Vec3;
+     175: invokevirtual #337                // Method net/minecraft/world/phys/Vec3.m_82541_:()Lnet/minecraft/world/phys/Vec3;
+     178: astore        13
+     180: aload         13
+     182: aload         12
+     184: invokevirtual #341                // Method net/minecraft/world/phys/Vec3.m_82526_:(Lnet/minecraft/world/phys/Vec3;)D
+     187: dconst_0
+     188: dcmpl
+     189: ifle          344
+     192: aload         8
+     194: invokeinterface #308,  1          // InterfaceMethod yesman/epicfight/api/asset/AssetAccessor.get:()Ljava/lang/Object;
+     199: instanceof    #343                // class yesman/epicfight/api/animation/types/AttackAnimation
+     202: ifeq          314
+     205: aload         10
+     207: invokevirtual #347                // Method yesman/epicfight/api/animation/types/EntityState.getLevel:()I
+     210: iconst_3
+     211: if_icmpge     314
+     214: aload_0
+     215: aload         6
+     217: aload         8
+     219: aload         10
+     221: aload_3
+     222: aload_1
+     223: invokestatic  #349                // Method blacklistClashBladeAnimation:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)Z
+     226: ifeq          314
+     229: aload         6
+     231: getstatic     #355                // Field net/minecraft/world/InteractionHand.MAIN_HAND:Lnet/minecraft/world/InteractionHand;
+     234: invokevirtual #359                // Method yesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch.getHoldingItemCapability:(Lnet/minecraft/world/InteractionHand;)Lyesman/epicfight/world/capabilities/item/CapabilityItem;
+     237: invokevirtual #363                // Method yesman/epicfight/world/capabilities/item/CapabilityItem.getWeaponCategory:()Lyesman/epicfight/world/capabilities/item/WeaponCategory;
+     240: getstatic     #367                // Field yesman/epicfight/world/capabilities/item/CapabilityItem$WeaponCategories.FIST:Lyesman/epicfight/world/capabilities/item/CapabilityItem$WeaponCategories;
+     243: if_acmpeq     314
+     246: aload_2
+     247: getstatic     #373                // Field net/minecraft/world/damagesource/DamageTypes.f_268515_:Lnet/minecraft/resources/ResourceKey;
+     250: invokevirtual #377                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     253: ifne          314
+     256: aload_2
+     257: getstatic     #383                // Field net/minecraft/tags/DamageTypeTags.f_268415_:Lnet/minecraft/tags/TagKey;
+     260: invokevirtual #387                // Method net/minecraft/world/damagesource/DamageSource.m_269533_:(Lnet/minecraft/tags/TagKey;)Z
+     263: ifne          314
+     266: aload_2
+     267: getstatic     #390                // Field net/minecraft/world/damagesource/DamageTypes.f_268468_:Lnet/minecraft/resources/ResourceKey;
+     270: invokevirtual #377                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     273: ifne          314
+     276: aload_2
+     277: getstatic     #393                // Field net/minecraft/world/damagesource/DamageTypes.f_268631_:Lnet/minecraft/resources/ResourceKey;
+     280: invokevirtual #377                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     283: ifne          314
+     286: aload_2
+     287: getstatic     #396                // Field net/minecraft/world/damagesource/DamageTypes.f_268671_:Lnet/minecraft/resources/ResourceKey;
+     290: invokevirtual #377                // Method net/minecraft/world/damagesource/DamageSource.m_276093_:(Lnet/minecraft/resources/ResourceKey;)Z
+     293: ifne          314
+     296: aload_0
+     297: aload         6
+     299: aload         8
+     301: aload         10
+     303: aload_3
+     304: aload_1
+     305: aload         5
+     307: iconst_0
+     308: invokestatic  #318                // Method clashBlade:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;I)V
+     311: goto          344
+     314: aload_0
+     315: aload         6
+     317: aload         8
+     319: aload         10
+     321: aload_3
+     322: aload_1
+     323: invokestatic  #398                // Method customAdditionClashBladeLogic:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;)Z
+     326: ifeq          344
+     329: aload_0
+     330: aload         6
+     332: aload         8
+     334: aload         10
+     336: aload_3
+     337: aload_1
+     338: aload         5
+     340: iconst_1
+     341: invokestatic  #318                // Method clashBlade:(Lnet/minecraftforge/event/entity/living/LivingAttackEvent;Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;Lyesman/epicfight/api/asset/AssetAccessor;Lyesman/epicfight/api/animation/types/EntityState;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/world/entity/Entity;Lnet/minecraft/server/level/ServerLevel;I)V
+     344: return
+    LineNumberTable:
+      line 134: 0
+      line 135: 5
+      line 136: 10
+      line 137: 15
+      line 139: 21
+      line 142: 48
+      line 143: 54
+      line 146: 55
+      line 147: 66
+      line 148: 71
+      line 151: 72
+      line 152: 83
+      line 153: 88
+      line 156: 89
+      line 158: 96
+      line 159: 103
+      line 161: 122
+      line 162: 137
+      line 163: 152
+      line 166: 153
+      line 167: 159
+      line 168: 166
+      line 170: 180
+      line 171: 192
+      line 172: 207
+      line 173: 223
+      line 174: 234
+      line 175: 250
+      line 176: 260
+      line 177: 270
+      line 178: 280
+      line 179: 290
+      line 180: 296
+      line 181: 314
+      line 182: 329
+      line 185: 344
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         36      18     5 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+          0     345     0 livingAttackEvent   Lnet/minecraftforge/event/entity/living/LivingAttackEvent;
+          5     340     1 defenderEntity   Lnet/minecraft/world/entity/Entity;
+         10     335     2 damageSource   Lnet/minecraft/world/damagesource/DamageSource;
+         15     330     3 attackerEntity   Lnet/minecraft/world/entity/Entity;
+         21     324     4 level   Lnet/minecraft/world/level/Level;
+         55     290     5 serverLevel   Lnet/minecraft/server/level/ServerLevel;
+         66     279     6 defenderLivingEntityPatch   Lyesman/epicfight/world/capabilities/entitypatch/LivingEntityPatch;
+         83     262     7 defenderAnimationPlayer   Lyesman/epicfight/api/animation/AnimationPlayer;
+         96     249     8 defenderDynamicAnimation   Lyesman/epicfight/api/asset/AssetAccessor;
+        103     242     9 defenderElapsedTimeFloat   F
+        122     223    10 defenderEntityState   Lyesman/epicfight/api/animation/types/EntityState;
+        159     186    11 entityPosition   Lnet/minecraft/world/phys/Vec3;
+        166     179    12 entityViewVector   Lnet/minecraft/world/phys/Vec3;
+        180     165    13 entitySubtract   Lnet/minecraft/world/phys/Vec3;
+}

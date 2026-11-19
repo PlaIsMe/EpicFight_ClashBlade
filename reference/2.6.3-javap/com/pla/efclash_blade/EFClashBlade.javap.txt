@@ -1,0 +1,153 @@
+Compiled from "EFClashBlade.java"
+public class com.pla.efclash_blade.EFClashBlade {
+  public static final java.lang.String MOD_ID;
+
+  public static final org.slf4j.Logger LOGGER;
+
+  public static final net.minecraftforge.network.simple.SimpleChannel PACKET_HANDLER;
+
+  private static int messageID;
+
+  public com.pla.efclash_blade.EFClashBlade(net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext);
+    Code:
+       0: aload_0
+       1: invokespecial #48                 // Method java/lang/Object."<init>":()V
+       4: aload_1
+       5: invokevirtual #54                 // Method net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext.getModEventBus:()Lnet/minecraftforge/eventbus/api/IEventBus;
+       8: astore_2
+       9: getstatic     #60                 // Field com/pla/efclash_blade/particle/EFClashBladeParticles.PARTICLES:Lnet/minecraftforge/registries/DeferredRegister;
+      12: aload_2
+      13: invokevirtual #66                 // Method net/minecraftforge/registries/DeferredRegister.register:(Lnet/minecraftforge/eventbus/api/IEventBus;)V
+      16: aload_2
+      17: aload_0
+      18: invokedynamic #85,  0             // InvokeDynamic #0:accept:(Lcom/pla/efclash_blade/EFClashBlade;)Ljava/util/function/Consumer;
+      23: invokeinterface #91,  2           // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      28: aload_1
+      29: getstatic     #95                 // Field net/minecraftforge/fml/config/ModConfig$Type.COMMON:Lnet/minecraftforge/fml/config/ModConfig$Type;
+      32: getstatic     #101                // Field com/pla/efclash_blade/config/EFClashBladeConfig.SPEC:Lnet/minecraftforge/common/ForgeConfigSpec;
+      35: ldc           #103                // String efclash_blade-server.toml
+      37: invokevirtual #107                // Method net/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext.registerConfig:(Lnet/minecraftforge/fml/config/ModConfig$Type;Lnet/minecraftforge/fml/config/IConfigSpec;Ljava/lang/String;)V
+      40: getstatic     #113                // Field com/pla/efclash_blade/gameasset/EFClashBladeSkillSlots.ENUM_MANAGER:Lyesman/epicfight/api/utils/ExtendableEnumManager;
+      43: ldc           #37                 // String efclash_blade
+      45: ldc           #109                // class com/pla/efclash_blade/gameasset/EFClashBladeSkillSlots
+      47: invokevirtual #119                // Method yesman/epicfight/api/utils/ExtendableEnumManager.registerEnumCls:(Ljava/lang/String;Ljava/lang/Class;)V
+      50: getstatic     #122                // Field com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories.ENUM_MANAGER:Lyesman/epicfight/api/utils/ExtendableEnumManager;
+      53: ldc           #37                 // String efclash_blade
+      55: ldc           #121                // class com/pla/efclash_blade/gameasset/EFClashBladeSkillCategories
+      57: invokevirtual #119                // Method yesman/epicfight/api/utils/ExtendableEnumManager.registerEnumCls:(Ljava/lang/String;Ljava/lang/Class;)V
+      60: getstatic     #128                // Field net/minecraftforge/fml/loading/FMLEnvironment.dist:Lnet/minecraftforge/api/distmarker/Dist;
+      63: invokevirtual #134                // Method net/minecraftforge/api/distmarker/Dist.isClient:()Z
+      66: ifeq          81
+      69: aload_2
+      70: aload_0
+      71: invokedynamic #141,  0            // InvokeDynamic #1:accept:(Lcom/pla/efclash_blade/EFClashBlade;)Ljava/util/function/Consumer;
+      76: invokeinterface #91,  2           // InterfaceMethod net/minecraftforge/eventbus/api/IEventBus.addListener:(Ljava/util/function/Consumer;)V
+      81: return
+    LineNumberTable:
+      line 39: 0
+      line 40: 4
+      line 41: 9
+      line 42: 16
+      line 43: 28
+      line 44: 40
+      line 45: 50
+      line 46: 60
+      line 47: 69
+      line 49: 81
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      82     0  this   Lcom/pla/efclash_blade/EFClashBlade;
+          0      82     1 context   Lnet/minecraftforge/fml/javafmlmod/FMLJavaModLoadingContext;
+          9      73     2 modEventBus   Lnet/minecraftforge/eventbus/api/IEventBus;
+
+  public static <T> void addNetworkMessage(java.lang.Class<T>, java.util.function.BiConsumer<T, net.minecraft.network.FriendlyByteBuf>, java.util.function.Function<net.minecraft.network.FriendlyByteBuf, T>, java.util.function.BiConsumer<T, java.util.function.Supplier<net.minecraftforge.network.NetworkEvent$Context>>);
+    Code:
+       0: getstatic     #152                // Field PACKET_HANDLER:Lnet/minecraftforge/network/simple/SimpleChannel;
+       3: getstatic     #154                // Field messageID:I
+       6: aload_0
+       7: aload_1
+       8: aload_2
+       9: aload_3
+      10: invokevirtual #160                // Method net/minecraftforge/network/simple/SimpleChannel.registerMessage:(ILjava/lang/Class;Ljava/util/function/BiConsumer;Ljava/util/function/Function;Ljava/util/function/BiConsumer;)Lnet/minecraftforge/network/simple/IndexedMessageCodec$MessageHandler;
+      13: pop
+      14: getstatic     #154                // Field messageID:I
+      17: iconst_1
+      18: iadd
+      19: putstatic     #154                // Field messageID:I
+      22: return
+    LineNumberTable:
+      line 52: 0
+      line 53: 14
+      line 54: 22
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      23     0 oclass   Ljava/lang/Class;
+          0      23     1 biconsumer   Ljava/util/function/BiConsumer;
+          0      23     2 function   Ljava/util/function/Function;
+          0      23     3 biconsumer1   Ljava/util/function/BiConsumer;
+
+  private void clientSetup(net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent);
+    Code:
+       0: new           #173                // class com/pla/efclash_blade/client/CameraEngine
+       3: dup
+       4: invokespecial #174                // Method com/pla/efclash_blade/client/CameraEngine."<init>":()V
+       7: pop
+       8: return
+    LineNumberTable:
+      line 57: 0
+      line 58: 8
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       9     0  this   Lcom/pla/efclash_blade/EFClashBlade;
+          0       9     1 event   Lnet/minecraftforge/fml/event/lifecycle/FMLClientSetupEvent;
+
+  private void commonSetup(net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent);
+    Code:
+       0: return
+    LineNumberTable:
+      line 74: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       1     0  this   Lcom/pla/efclash_blade/EFClashBlade;
+          0       1     1 event   Lnet/minecraftforge/fml/event/lifecycle/FMLCommonSetupEvent;
+
+  public void onServerStarting(net.minecraftforge.event.server.ServerStartingEvent);
+    Code:
+       0: return
+    LineNumberTable:
+      line 78: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       1     0  this   Lcom/pla/efclash_blade/EFClashBlade;
+          0       1     1 event   Lnet/minecraftforge/event/server/ServerStartingEvent;
+
+  private static java.lang.String lambda$static$0();
+    Code:
+       0: ldc           #185                // String 1
+       2: areturn
+    LineNumberTable:
+      line 36: 0
+
+  static {};
+    Code:
+       0: invokestatic  #192                // Method com/mojang/logging/LogUtils.getLogger:()Lorg/slf4j/Logger;
+       3: putstatic     #194                // Field LOGGER:Lorg/slf4j/Logger;
+       6: ldc           #37                 // String efclash_blade
+       8: ldc           #196                // String main
+      10: invokestatic  #202                // Method net/minecraft/resources/ResourceLocation.fromNamespaceAndPath:(Ljava/lang/String;Ljava/lang/String;)Lnet/minecraft/resources/ResourceLocation;
+      13: invokedynamic #212,  0            // InvokeDynamic #2:get:()Ljava/util/function/Supplier;
+      18: ldc           #185                // String 1
+      20: invokedynamic #226,  0            // InvokeDynamic #3:test:(Ljava/lang/String;)Ljava/util/function/Predicate;
+      25: ldc           #185                // String 1
+      27: invokedynamic #226,  0            // InvokeDynamic #3:test:(Ljava/lang/String;)Ljava/util/function/Predicate;
+      32: invokestatic  #232                // Method net/minecraftforge/network/NetworkRegistry.newSimpleChannel:(Lnet/minecraft/resources/ResourceLocation;Ljava/util/function/Supplier;Ljava/util/function/Predicate;Ljava/util/function/Predicate;)Lnet/minecraftforge/network/simple/SimpleChannel;
+      35: putstatic     #152                // Field PACKET_HANDLER:Lnet/minecraftforge/network/simple/SimpleChannel;
+      38: iconst_0
+      39: putstatic     #154                // Field messageID:I
+      42: return
+    LineNumberTable:
+      line 34: 0
+      line 35: 6
+      line 36: 10
+      line 37: 38
+}

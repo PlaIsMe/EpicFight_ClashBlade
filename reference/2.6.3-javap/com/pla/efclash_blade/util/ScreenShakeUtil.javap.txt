@@ -1,0 +1,131 @@
+Compiled from "ScreenShakeUtil.java"
+public class com.pla.efclash_blade.util.ScreenShakeUtil {
+  public com.pla.efclash_blade.util.ScreenShakeUtil();
+    Code:
+       0: aload_0
+       1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+       4: return
+    LineNumberTable:
+      line 12: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       5     0  this   Lcom/pla/efclash_blade/util/ScreenShakeUtil;
+
+  public static void applyScreenShake(net.minecraft.server.level.ServerLevel, net.minecraft.world.phys.Vec3, double, int, int);
+    Code:
+       0: dload_2
+       1: dload_2
+       2: dmul
+       3: dstore        6
+       5: new           #25                 // class net/minecraft/world/phys/AABB
+       8: dup
+       9: aload_1
+      10: aload_1
+      11: invokespecial #28                 // Method net/minecraft/world/phys/AABB."<init>":(Lnet/minecraft/world/phys/Vec3;Lnet/minecraft/world/phys/Vec3;)V
+      14: dload_2
+      15: invokevirtual #32                 // Method net/minecraft/world/phys/AABB.m_82400_:(D)Lnet/minecraft/world/phys/AABB;
+      18: astore        8
+      20: aload_0
+      21: ldc           #34                 // class net/minecraft/world/entity/player/Player
+      23: aload         8
+      25: invokedynamic #53,  0             // InvokeDynamic #0:test:()Ljava/util/function/Predicate;
+      30: invokevirtual #59                 // Method net/minecraft/server/level/ServerLevel.m_6443_:(Ljava/lang/Class;Lnet/minecraft/world/phys/AABB;Ljava/util/function/Predicate;)Ljava/util/List;
+      33: invokeinterface #65,  1           // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      38: astore        9
+      40: aload         9
+      42: invokeinterface #71,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      47: ifeq          145
+      50: aload         9
+      52: invokeinterface #75,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      57: checkcast     #34                 // class net/minecraft/world/entity/player/Player
+      60: astore        10
+      62: aload         10
+      64: aload_1
+      65: getfield      #81                 // Field net/minecraft/world/phys/Vec3.f_82479_:D
+      68: aload_1
+      69: getfield      #84                 // Field net/minecraft/world/phys/Vec3.f_82480_:D
+      72: aload_1
+      73: getfield      #87                 // Field net/minecraft/world/phys/Vec3.f_82481_:D
+      76: invokevirtual #91                 // Method net/minecraft/world/entity/player/Player.m_20275_:(DDD)D
+      79: dstore        11
+      81: dload         11
+      83: dload         6
+      85: dcmpl
+      86: ifgt          40
+      89: aload         10
+      91: instanceof    #93                 // class net/minecraft/server/level/ServerPlayer
+      94: ifeq          40
+      97: aload         10
+      99: checkcast     #93                 // class net/minecraft/server/level/ServerPlayer
+     102: astore        13
+     104: getstatic     #99                 // Field com/pla/efclash_blade/EFClashBlade.PACKET_HANDLER:Lnet/minecraftforge/network/simple/SimpleChannel;
+     107: getstatic     #103                // Field net/minecraftforge/network/PacketDistributor.PLAYER:Lnet/minecraftforge/network/PacketDistributor;
+     110: aload         13
+     112: invokedynamic #115,  0            // InvokeDynamic #1:get:(Lnet/minecraft/server/level/ServerPlayer;)Ljava/util/function/Supplier;
+     117: invokevirtual #119                // Method net/minecraftforge/network/PacketDistributor.with:(Ljava/util/function/Supplier;)Lnet/minecraftforge/network/PacketDistributor$PacketTarget;
+     120: new           #121                // class com/pla/efclash_blade/network/CPApplyShake
+     123: dup
+     124: iload         4
+     126: iload         5
+     128: i2f
+     129: iload         4
+     131: i2f
+     132: ldc           #122                // float 10.0f
+     134: fdiv
+     135: iconst_1
+     136: invokespecial #125                // Method com/pla/efclash_blade/network/CPApplyShake."<init>":(IFFI)V
+     139: invokevirtual #131                // Method net/minecraftforge/network/simple/SimpleChannel.send:(Lnet/minecraftforge/network/PacketDistributor$PacketTarget;Ljava/lang/Object;)V
+     142: goto          40
+     145: return
+    LineNumberTable:
+      line 15: 0
+      line 16: 5
+      line 18: 20
+      line 21: 62
+      line 22: 81
+      line 26: 104
+      line 27: 117
+      line 26: 139
+      line 30: 142
+      line 31: 145
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+         81      61    11 distSq   D
+        104      38    13 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+         62      80    10 player   Lnet/minecraft/world/entity/player/Player;
+          0     146     0 level   Lnet/minecraft/server/level/ServerLevel;
+          0     146     1 center   Lnet/minecraft/world/phys/Vec3;
+          0     146     2 range   D
+          0     146     4 durationTicks   I
+          0     146     5 amplifier   I
+          5     141     6 rangeSq   D
+         20     126     8   box   Lnet/minecraft/world/phys/AABB;
+
+  private static net.minecraft.server.level.ServerPlayer lambda$applyScreenShake$1(net.minecraft.server.level.ServerPlayer);
+    Code:
+       0: aload_0
+       1: areturn
+    LineNumberTable:
+      line 27: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0       2     0 serverPlayer   Lnet/minecraft/server/level/ServerPlayer;
+
+  private static boolean lambda$applyScreenShake$0(net.minecraft.world.entity.player.Player);
+    Code:
+       0: aload_0
+       1: invokevirtual #150                // Method net/minecraft/world/entity/player/Player.m_6084_:()Z
+       4: ifeq          18
+       7: aload_0
+       8: invokevirtual #153                // Method net/minecraft/world/entity/player/Player.m_5833_:()Z
+      11: ifne          18
+      14: iconst_1
+      15: goto          19
+      18: iconst_0
+      19: ireturn
+    LineNumberTable:
+      line 19: 0
+    LocalVariableTable:
+      Start  Length  Slot  Name   Signature
+          0      20     0 player   Lnet/minecraft/world/entity/player/Player;
+}

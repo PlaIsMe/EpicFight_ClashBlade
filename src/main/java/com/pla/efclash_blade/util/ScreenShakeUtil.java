@@ -16,7 +16,6 @@ public class ScreenShakeUtil {
 
         for (Player player : level.getEntitiesOfClass(Player.class, box,
                 player -> player.isAlive() && !player.isSpectator())) {
-
             double distSq = player.distanceToSqr(center.x, center.y, center.z);
             if (distSq > rangeSq) continue;
 
